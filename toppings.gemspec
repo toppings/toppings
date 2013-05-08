@@ -6,11 +6,11 @@ require 'toppings/version'
 Gem::Specification.new do |spec|
   spec.name          = "toppings"
   spec.version       = Toppings::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["Falk Hoppe, Roman Stranghöner"]
+  spec.email         = ["falkhoppe81@gmail.com"]
+  spec.description   = %q{css frontend framework based on sass/scss}
+  # spec.summary       = %q{TODO: Write a gem summary}
+  # spec.homepage      = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
