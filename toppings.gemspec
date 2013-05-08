@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Falk Hoppe, Roman Stranghöner"]
   spec.email         = ["falkhoppe81@gmail.com"]
   spec.description   = %q{css frontend framework based on sass/scss}
-  # spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = %q{css frontend framework based on sass/scss}
   # spec.homepage      = ""
   spec.license       = "MIT"
 
