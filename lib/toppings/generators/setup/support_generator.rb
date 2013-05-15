@@ -3,8 +3,10 @@ module Toppings
     module Setup
       class SupportGenerator < GroupGenerator
 
-        def create_setting_files
-          create_file base_path.join("_debug.css.sass")
+
+        SUPPORT_FILES = %w{debug}
+        def create_support_files
+          SUPPORT_FILES.each { |file| create_group_file file }
         end
 
       end
