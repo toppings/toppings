@@ -7,7 +7,8 @@ module Toppings
 
         # the only ever fully compiled file at the moment
         def create_root_file
-          create_file base_path.join("toppings.css.sass")
+          # TODO: base file name has to be configurable
+          create_file stylesheets_path.join("toppings.css.sass")
         end
 
       end
