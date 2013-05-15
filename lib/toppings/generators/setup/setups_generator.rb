@@ -3,9 +3,9 @@ module Toppings
     module Setup
       class SetupsGenerator < GroupGenerator
 
-        def create_setting_files
-          create_file base_path.join("_responsive_grid.css.sass")
-          create_file base_path.join("_vertical_grid.css.sass")
+        SETUP_FILES = %w{responsive_grid vertical_grid}
+        def create_setup_files
+          SETUP_FILES.each { |file| create_group_file file }
         end
 
       end
