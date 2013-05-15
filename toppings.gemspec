@@ -25,5 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "thor"
 
   spec.add_dependency "thor", ">= 0.18.1"
-  spec.add_runtime_dependency "activesupport", ">= 3.2"
+  spec.add_dependency "activesupport", ">= 3.2"
+  spec.add_dependency "term-ansicolor"
 end
