@@ -8,7 +8,7 @@ module Toppings
         include Toppings::Helper::PathHelper
 
         def notify_invoke
-          notify "invoke #{stripped_class_name}"
+          say "invoke #{stripped_class_name}"
         end
 
         private
