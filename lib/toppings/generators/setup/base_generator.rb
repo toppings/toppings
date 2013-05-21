@@ -8,22 +8,29 @@ module Toppings
         include Toppings::Helper::PathHelper
 
         def notify_invoke
-          say "invoke #{stripped_class_name}"
+          say "invoke #{self.class.stripped_class_name}"
+        end
+
+        def self.source_root
+          template_path
         end
 
         private
 
-        def class_name
-          self.class.name
-        end
-
-        def stripped_class_name
-          class_name.split('::').last
-        end
-
         def base_name
-          stripped_class_name.gsub(/Generator$/, '').underscore
+          self.class.base_name
         end
+
+        class << self
+          def base_name
+            @base_name ||= stripped_class_name.gsub(/Generator$/, '').underscore
+          end
+
+          def stripped_class_name
+            name.split('::').last
+          end
+        end
+
       end
     end
   end
