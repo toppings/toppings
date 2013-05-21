@@ -10,7 +10,22 @@ module Toppings
           append_import group_base_name, root_file_path
         end
 
+        class << self
+          def source_root
+            template_path.join(base_name)
+          end
+        end
+
         private
+
+        def group_template_file(file)
+          template sass_partial_name(file), base_path.join(sass_partial_name(file))
+          #append_import file, base_file
+        end
+
+        def sass_partial_name(file)
+          "_#{file}.css.sass"
+        end
 
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
@@ -33,7 +48,6 @@ module Toppings
         def base_path
           @base_path ||= stylesheets_path.join(base_name)
         end
-
       end
     end
   end
