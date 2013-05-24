@@ -3,7 +3,8 @@ module Toppings
     module Setup
       class SettingsGenerator < GroupGenerator
 
-        SETTINGS_FILES = %w{typography colors shadows borders}
+        SETTINGS_FILES = %w{colors shadows borders typography}
+
         def create_setting_files
           SETTINGS_FILES.each { |file| create_group_file file }
         end
