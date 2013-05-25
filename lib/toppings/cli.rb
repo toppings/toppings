@@ -15,5 +15,9 @@ module Toppings
 
     end
 
+    desc "c", "shortcut for component"
+    def c
+      component
+    end
   end
 end
