@@ -4,23 +4,32 @@ module Toppings
   module Generators
     module Setup
       class GroupGenerator < BaseGenerator
+        class_attribute :templates
+
+        class << self
+          def source_root
+            template_path.join(base_name)
+          end
+
+          def with_templates(*files)
+            self.templates = files
+          end
+        end
 
         def create_base_import_file
           create_file base_file
           append_import group_base_name, root_file_path
         end
 
-        class << self
-          def source_root
-            template_path.join(base_name)
-          end
+        def create_template_files
+          self.templates.each { |file| group_template_file(file.to_s) } if self.templates?
         end
 
         private
 
-        def group_template_file(file)
+        def group_template_file(file, append = true)
           template sass_partial_name(file), base_path.join(sass_partial_name(file))
-          #append_import file, base_file
+          append_import file, base_file if append
         end
 
         def sass_partial_name(file)
