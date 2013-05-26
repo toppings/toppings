@@ -5,12 +5,10 @@ module Toppings
   module Generators
     class InstallGenerator < Thor::Group
       include Thor::Actions
+      include Toppings::Helper::GeneratorRegistrationHelper
 
       def install_framework_structure
-        %w{root_file fonts settings setups helper}.each do |generator|
-          # TODO clean up this static call structure
-          "Toppings::Generators::Setup::#{generator.camelcase}Generator".constantize.start
-        end
+        register_generator :root_file, :fonts, :settings, :setups, :helper, group: 'setup'
       end
     end
   end
