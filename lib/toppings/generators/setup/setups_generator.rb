@@ -2,13 +2,7 @@ module Toppings
   module Generators
     module Setup
       class SetupsGenerator < GroupGenerator
-
-        SETUP_FILES = %w{responsive_grid vertical_rhythm }
-
-        def create_setup_files
-          SETUP_FILES.each { |file| group_template_file file }
-        end
-
+        with_templates :responsive_grid, :vertical_rhythm
       end
     end
   end
