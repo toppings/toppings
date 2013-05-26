@@ -27,7 +27,7 @@ module Toppings
           end
 
           def stripped_class_name
-            name.split('::').last
+            name.demodulize
           end
         end
 
