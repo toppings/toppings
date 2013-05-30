@@ -20,6 +20,10 @@ describe Toppings::Generators::Setup::BaseGenerator do
       subject.should output("invoke Setup::BaseGenerator")
     end
 
+    it "should provide the main template path" do
+      subject[:described].source_root.to_s.should eq('lib/toppings/templates')
+    end
+
   end
 
 
