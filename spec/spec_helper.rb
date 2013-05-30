@@ -4,6 +4,8 @@ require 'genspec'
 require 'coveralls'
 Coveralls.wear!
 
+require 'support/path_helper'
+
 require 'thor'
 require 'toppings'
 
