@@ -6,6 +6,7 @@ gemspec
 
 group :test do
   gem 'rspec'
+  gem 'genspec'
 end
 
 gem 'coveralls', require: false
