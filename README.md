@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME].png)](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME])
+[![Build Status](https://travis-ci.org/mechanoid/toppings.png)](https://travis-ci.org/mechanoid/toppings)
 [![Coverage Status](https://coveralls.io/repos/mechanoid/toppings/badge.png)](https://coveralls.io/r/mechanoid/toppings)
 [![Code Climate](https://codeclimate.com/github/mechanoid/toppings.png)](https://codeclimate.com/github/mechanoid/toppings)
 [![Dependency Status](https://gemnasium.com/mechanoid/toppings.png)](https://gemnasium.com/mechanoid/toppings)
