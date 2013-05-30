@@ -1,4 +1,5 @@
 require 'thor/group'
+require 'toppings/helper'
 
 module Toppings
   module Generators
@@ -8,14 +9,12 @@ module Toppings
         include Toppings::Helper::PathHelper
 
         def notify_invoke
-          say "invoke #{self.class.stripped_class_name}"
+          say "invoke Setup::#{self.class.stripped_class_name}"
         end
 
         def self.source_root
           template_path
         end
-
-        private
 
         def base_name
           self.class.base_name
