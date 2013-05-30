@@ -7,3 +7,5 @@ gemspec
 group :test do
   gem 'rspec'
 end
+
+gem 'coveralls', require: false
