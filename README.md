@@ -1,29 +1,5 @@
-# Toppings
-
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'toppings'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install toppings
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+[![Build Status](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME].png)](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME])
+[![Coverage Status](https://coveralls.io/repos/mechanoid/toppings/badge.png)](https://coveralls.io/r/mechanoid/toppings)
+[![Code Climate](https://codeclimate.com/github/mechanoid/toppings.png)](https://codeclimate.com/github/mechanoid/toppings)
+[![Dependency Status](https://gemnasium.com/mechanoid/toppings.png)](https://gemnasium.com/mechanoid/toppings)
+[![Gem Version](https://badge.fury.io/rb/toppings.png)](http://badge.fury.io/rb/toppings)
