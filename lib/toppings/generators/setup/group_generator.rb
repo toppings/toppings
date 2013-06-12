@@ -17,7 +17,7 @@ module Toppings
         end
 
         def create_base_import_file
-          create_file base_file
+          create_file base_file_path
           append_import group_base_name, root_file_path
         end
 
@@ -29,7 +29,7 @@ module Toppings
 
         def group_template_file(file, append = true)
           template sass_partial_name(file), base_path.join(sass_partial_name(file))
-          append_import file, base_file if append
+          append_import file, base_file_path if append
         end
 
         def sass_partial_name(file)
@@ -39,23 +39,35 @@ module Toppings
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
           create_file base_path.join("_#{file}.css.sass")
-          append_import file, base_file
+          append_import file, base_file_path
         end
 
         def group_base_name
-          base_path.join("base")
+          relative_base_path.join("base")
         end
 
-        def base_file
-          base_path.join("_base.css.sass")
+        def base_file_name
+          "_base.css.sass"
+        end
+
+        def relative_base_file_path
+          relative_base_path.join(base_file_name)
+        end
+
+        def base_file_path
+          base_path.join(base_file_name)
         end
 
         def append_import(import_file, target_file)
           append_to_file target_file, "@import \"#{import_file}\" \n"
         end
 
+        def relative_base_path
+          @relative_base_path ||= Pathname.new(base_name)
+        end
+
         def base_path
-          @base_path ||= stylesheets_path.join(base_name)
+          @base_path ||= stylesheets_path.join(relative_base_path)
         end
       end
     end
