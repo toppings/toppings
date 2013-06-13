@@ -4,6 +4,10 @@ module Toppings
   def self.gem_root
     @gem_root ||= File.expand_path("../..", __FILE__)
   end
+
+  def self.conf
+    @conf ||= Toppings::Config.new
+  end
 end
 
 
