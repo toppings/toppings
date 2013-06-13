@@ -44,7 +44,7 @@ describe Toppings::Config do
       end
 
       describe "having a sass dialect configuration" do
-        it { subject.from_defaults.sass.dialect.should eq("fubar") }
+        it { subject.from_defaults.sass.dialect.should eq("sass") }
       end
 
       describe "having a stylesheet root file configuration" do

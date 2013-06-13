@@ -1,7 +1,7 @@
 {
   // whether to use sass original style or scss syntax
   "sass": {
-    "dialect": "fubar"
+    "dialect": "sass"
   },
 
   // the name of the given root file where base files will be appended
