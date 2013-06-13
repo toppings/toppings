@@ -9,21 +9,27 @@ module Toppings
       end
     end
 
-    def default_config
-      @default_config ||= self.default_config = parse_default_config
-    end
+    class << self
+      def from_defaults
+        @defaults ||= new(parsed_default_config)
+      end
 
-    def parse_default_config
-      config_file = File.read(default_config_path)
-      JSON.parse(config_file)
-    end
+      def parsed_default_config
+        config_file = File.read(default_config_path)
+        JSON.parse(config_file)
+      end
 
-    def default_config_path
-      Pathname.new(Toppings.gem_root).join('config', default_config_name)
-    end
+      def default_config_path
+        config_path.join default_config_name
+      end
 
-    def default_config_name
-      'default.json'
+      def default_config_name
+        'default.json'
+      end
+
+      def config_path
+        Pathname.new(Toppings.gem_root).join('config')
+      end
     end
   end
 end

@@ -6,7 +6,7 @@ module Toppings
   end
 
   def self.conf
-    @conf ||= Toppings::Config.new
+    @conf ||= Toppings::Config.from_defaults
   end
 end
 
