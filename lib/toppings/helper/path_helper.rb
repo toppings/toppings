@@ -13,7 +13,7 @@ module Toppings
 
       # TODO: base file name has to be configurable
       def root_file_path
-        stylesheets_path.join("toppings.css.sass")
+        stylesheets_path.join("#{Toppings.conf.stylesheets.root_file}.css.#{Toppings.conf.sass.dialect}")
       end
 
       module ClassMethods

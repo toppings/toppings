@@ -38,7 +38,7 @@ module Toppings
 
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
-          create_file base_path.join("_#{file}.css.sass")
+          create_file base_path.join("_#{file}.css.#{Toppings.conf.sass.dialect}")
           append_import file, base_file_path
         end
 
