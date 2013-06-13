@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Toppings
   class Config < OpenStruct
 
