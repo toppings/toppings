@@ -1,5 +1,4 @@
 require 'thor/group'
-require 'toppings/helper'
 
 module Toppings
   module Generators
