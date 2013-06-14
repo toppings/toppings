@@ -4,11 +4,7 @@ module Toppings
       extend ActiveSupport::Concern
 
       def stylesheets_path
-        @stylesheets_path ||= root_path.join('stylesheets')
-      end
-
-      def root_path
-        self.class.root_path
+        @stylesheets_path ||= Pathname('.').join('stylesheets')
       end
 
       # TODO: base file name has to be configurable
@@ -18,11 +14,7 @@ module Toppings
 
       module ClassMethods
         def template_path
-          @template_path ||= root_path.join('lib', 'toppings', 'templates')
-        end
-
-        def root_path
-          Pathname.new('.')
+          @template_path ||= Pathname(Toppings.gem_root).join('lib', 'toppings', 'templates')
         end
       end
 
