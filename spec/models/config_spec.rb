@@ -58,6 +58,10 @@ describe Toppings::Config do
         subject.stub(:app_config_path).and_return test_config_path
       end
 
+      describe "having a sass dialect configuration without providing it in the custom config" do
+        it { subject.load.sass.dialect.should eq("sass") }
+      end
+
       describe "having a stylesheet root file configuration" do
         it { subject.load.stylesheets.root_file.should eq("toppings_custom") }
       end
