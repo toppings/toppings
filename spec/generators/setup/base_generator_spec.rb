@@ -21,7 +21,7 @@ describe Toppings::Generators::Setup::BaseGenerator do
     end
 
     it "should provide the main template path" do
-      subject[:described].source_root.to_s.should eq('lib/toppings/templates')
+      subject[:described].source_root.should_not be_nil
     end
 
   end
