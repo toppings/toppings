@@ -10,14 +10,14 @@ module Toppings
       Toppings::Generators::InstallGenerator.start
     end
 
-    desc "component", "create a new sass component"
-    def component
-
+    desc "module", "create a new sass module"
+    def module(*args)
+      Toppings::Generators::ModuleGenerator.start(args)
     end
 
-    desc "c", "shortcut for component"
-    def c
-      component
+    desc "m", "shortcut for component"
+    def m(*args)
+      self.module(*args)
     end
   end
 end
