@@ -13,36 +13,52 @@ module Toppings
 
     class << self
       def load
-        @config ||= from_default_config
+        @config ||= new(joined_config)
       end
 
-      def from_custom_config
-        @customs ||= new(parsed_config(custom_config_path))
+      def joined_config
+        default_config.merge(custom_config)
       end
 
-      def from_default_config
-        @defaults ||= new(parsed_config(default_config_path))
+      def custom_config
+        @customs ||= parsed_config(custom_config_path)
+      end
+
+      def default_config
+        @defaults ||= parsed_config(default_config_path)
       end
 
       def parsed_config(path)
-        config_file = File.read(path)
-        JSON.parse(config_file)
+        config_file = File.read(path) if File.exists?(path)
+        JSON.parse(config_file || "{}")
       end
 
       def default_config_path
-        config_path.join default_config_name
+        gem_config_path.join default_config_name
       end
 
       def custom_config_path
-        config_path.join default_config_name
+        app_config_path.join custom_config_name
       end
 
       def default_config_name
         'default.json'
       end
 
-      def config_path
+      def custom_config_name
+        'toppings.json'
+      end
+
+      def gem_config_path
         Pathname.new(Toppings.gem_root).join('config')
+      end
+
+      # The app config path is based on the current directory,
+      # from where the toppings command is called.
+      #
+      # TODO: app_config path should be configurable by a thor param
+      def app_config_path
+        Pathname.new('.').join('config')
       end
     end
   end
