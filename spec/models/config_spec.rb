@@ -28,7 +28,7 @@ describe Toppings::Config do
 
     context "having a default config" do
       before do
-        subject.stub(:config_path).and_return test_config_path
+        subject.stub(:gem_config_path).and_return test_config_path
       end
 
       describe "provided at a default config path in the gem folder" do
@@ -40,7 +40,7 @@ describe Toppings::Config do
       end
 
       describe "asked for the sass options, nested options ..." do
-        it { subject.load.sass.should be_kind_of(Toppings::Config)}
+        it { subject.load.sass.should be_kind_of(Toppings::Config) }
       end
 
       describe "having a sass dialect configuration" do
@@ -51,5 +51,21 @@ describe Toppings::Config do
         it { subject.load.stylesheets.root_file.should eq("toppings") }
       end
     end
+
+    context "having a default config and an application config" do
+      before do
+        subject.stub(:gem_config_path).and_return test_config_path
+        subject.stub(:app_config_path).and_return test_config_path
+      end
+
+      describe "having a stylesheet root file configuration" do
+        it { subject.load.stylesheets.root_file.should eq("toppings_custom") }
+      end
+
+      describe "with a new option 'new_option'" do
+        it { subject.load.new_option.should eq("something") }
+      end
+    end
+
   end
 end

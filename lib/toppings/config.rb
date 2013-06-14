@@ -13,7 +13,7 @@ module Toppings
 
     class << self
       def load
-        @config ||= new(joined_config)
+        @config = new(joined_config)
       end
 
       def joined_config
@@ -21,11 +21,11 @@ module Toppings
       end
 
       def custom_config
-        @customs ||= parsed_config(custom_config_path)
+        @customs = parsed_config(custom_config_path)
       end
 
       def default_config
-        @defaults ||= parsed_config(default_config_path)
+        @defaults = parsed_config(default_config_path)
       end
 
       def parsed_config(path)
