@@ -36,19 +36,19 @@ describe Toppings::Config do
       end
 
       describe "asked for a non existing option, the option ..." do
-        it { subject.from_defaults.tyrion_lannister.should be_nil }
+        it { subject.load.tyrion_lannister.should be_nil }
       end
 
       describe "asked for the sass options, nested options ..." do
-        it { subject.from_defaults.sass.should be_kind_of(Toppings::Config)}
+        it { subject.load.sass.should be_kind_of(Toppings::Config)}
       end
 
       describe "having a sass dialect configuration" do
-        it { subject.from_defaults.sass.dialect.should eq("sass") }
+        it { subject.load.sass.dialect.should eq("sass") }
       end
 
       describe "having a stylesheet root file configuration" do
-        it { subject.from_defaults.stylesheets.root_file.should eq("toppings") }
+        it { subject.load.stylesheets.root_file.should eq("toppings") }
       end
     end
   end

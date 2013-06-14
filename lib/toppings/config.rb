@@ -12,16 +12,28 @@ module Toppings
     end
 
     class << self
-      def from_defaults
-        @defaults ||= new(parsed_default_config)
+      def load
+        @config ||= from_default_config
       end
 
-      def parsed_default_config
-        config_file = File.read(default_config_path)
+      def from_custom_config
+        @customs ||= new(parsed_config(custom_config_path))
+      end
+
+      def from_default_config
+        @defaults ||= new(parsed_config(default_config_path))
+      end
+
+      def parsed_config(path)
+        config_file = File.read(path)
         JSON.parse(config_file)
       end
 
       def default_config_path
+        config_path.join default_config_name
+      end
+
+      def custom_config_path
         config_path.join default_config_name
       end
 
