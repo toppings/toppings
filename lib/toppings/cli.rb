@@ -1,7 +1,7 @@
 require 'thor'
 
 require 'toppings'
-require "toppings/generators/install_generator"
+require "toppings/generators"
 
 module Toppings
   class CLI < Thor

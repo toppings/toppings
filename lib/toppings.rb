@@ -14,8 +14,4 @@ end
 require "toppings/helper"
 require "toppings/config"
 require "toppings/version"
-require "toppings/generators"
-
-require 'pathname'
-
 
