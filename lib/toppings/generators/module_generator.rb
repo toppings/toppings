@@ -5,10 +5,11 @@ module Toppings
     class ModuleGenerator < Thor::Group
       include Thor::Actions
       include Toppings::Helper::PathHelper
+      include Toppings::Helper::BaseFileHelper
 
       argument :name
-      def module
-        #template sass_partial_name(file), base_path.join(sass_partial_name(file))
+      def create_module_file
+        template sass_partial_name('module', :erb), base_path.join(sass_partial_name(name))
         #append_import file, base_file_path if append
       end
 

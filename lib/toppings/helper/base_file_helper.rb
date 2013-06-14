@@ -3,7 +3,6 @@ module Toppings
     module BaseFileHelper
       extend ActiveSupport::Concern
 
-
       private
 
       def group_base_name
@@ -26,12 +25,18 @@ module Toppings
         "_base.css.#{Toppings.conf.sass.dialect}"
       end
 
-      def sass_partial_name(file)
-        "_#{file}.css.#{Toppings.conf.sass.dialect}"
+      def sass_partial_name(file, type = nil)
+        file_name = %W{_#{file} css #{Toppings.conf.sass.dialect}}
+        file_name << "erb" if type == :erb
+        file_name.join('.')
       end
 
       def base_name
         self.class.base_name
+      end
+
+      def relative_base_path
+        @relative_base_path ||= Pathname.new(base_name)
       end
 
       module ClassMethods

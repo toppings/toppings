@@ -44,9 +44,6 @@ module Toppings
           append_to_file target_file, "@import \"#{import_file}\" \n"
         end
 
-        def relative_base_path
-          @relative_base_path ||= Pathname.new(base_name)
-        end
 
       end
     end
