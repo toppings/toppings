@@ -5,6 +5,8 @@ require "toppings/generators"
 
 module Toppings
   class CLI < Thor
+    VALID_GENERATORS = %w{module setting font setup layout helper}.freeze
+
 
     desc "install", "create a basic topping styles layout"
     def install
@@ -13,12 +15,16 @@ module Toppings
 
     desc "generate GENERATOR", "generating a toppings component like modules, settings etc."
     def generate(generator = nil, *args)
-      case generator
-        when 'module'
-          Toppings::Generators::ModulesGenerator.start(args)
+      if generator
+        if VALID_GENERATORS.include? generator
+        Toppings::Generators::ComponentsGenerator.start(args.unshift(generator))
         else
-          say "ERROR: generate was called with no generator argument"
+          say "ERROR: generate was called with invalid generator argument"
           say "USAGE: valid generators are font | module | setting | setup"
+        end
+      else
+        say "ERROR: generate was called with no generator argument"
+        say "USAGE: valid generators are font | module | setting | setup"
       end
     end
 

@@ -44,6 +44,10 @@ module Toppings
       end
 
       module ClassMethods
+        def base_name=(name)
+          @base_name = name
+        end
+
         def base_name
           @base_name ||= stripped_class_name.gsub(/Generator$/, '').underscore
         end

@@ -1,6 +1,6 @@
 # manual require statements upfront to keep them in ordered before all others
 require 'toppings/generators/install_generator'
-require 'toppings/generators/modules_generator'
+require 'toppings/generators/components_generator'
 require 'toppings/generators/install/base_generator'
 require 'toppings/generators/install/group_generator'
 
