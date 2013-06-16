@@ -2,7 +2,7 @@ require_relative 'root_file_generator'
 
 module Toppings
   module Generators
-    module Setup
+    module Install
       class GroupGenerator < BaseGenerator
         class_attribute :templates
 

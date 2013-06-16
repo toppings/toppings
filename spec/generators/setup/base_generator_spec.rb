@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Toppings::Generators::Setup::BaseGenerator do
+describe Toppings::Generators::Install::BaseGenerator do
 
   context "as setup generator base class" do
 
@@ -17,7 +17,7 @@ describe Toppings::Generators::Setup::BaseGenerator do
     end
 
     it "should output the invocation of the base generator" do
-      subject.should output("invoke Setup::BaseGenerator")
+      subject.should output("invoke Install::BaseGenerator")
     end
 
     it "should provide the main template path" do

@@ -1,6 +1,6 @@
 module Toppings
   module Generators
-    module Setup
+    module Install
       class RootFileGenerator < BaseGenerator
 
         # the only ever fully compiled file at the moment
