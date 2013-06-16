@@ -4,7 +4,7 @@ module Toppings
       extend ActiveSupport::Concern
 
       def stylesheets_path
-        @stylesheets_path ||= Pathname('.').join('stylesheets')
+        @stylesheets_path ||= Pathname('.').join(Toppings.conf.stylesheets.root_folder)
       end
 
       # TODO: base file name has to be configurable
