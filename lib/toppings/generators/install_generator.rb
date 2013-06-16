@@ -11,7 +11,7 @@ module Toppings
       end
 
       def install_framework_structure
-        register_generator :root_file, :fonts, :settings, :setups, :helper, group: 'setup'
+        register_generator :root_file, :fonts, :settings, :setups, :helper, group: 'install'
       end
     end
   end

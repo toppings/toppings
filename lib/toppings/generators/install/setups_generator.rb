@@ -1,6 +1,6 @@
 module Toppings
   module Generators
-    module Setup
+    module Install
       class SetupsGenerator < GroupGenerator
         with_templates :responsive_grid, :vertical_rhythm
       end
