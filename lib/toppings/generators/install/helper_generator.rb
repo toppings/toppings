@@ -1,6 +1,6 @@
 module Toppings
   module Generators
-    module Setup
+    module Install
       class HelperGenerator < GroupGenerator
         with_templates :debug
       end

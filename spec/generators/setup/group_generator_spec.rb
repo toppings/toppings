@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Toppings::Generators::Setup::GroupGenerator do
+describe Toppings::Generators::Install::GroupGenerator do
 
   describe "sporting multiple stylesheet files" do
     within_source_root do |tempdir|

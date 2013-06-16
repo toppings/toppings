@@ -10,9 +10,9 @@ module Toppings
       argument :name
       def create_module_file
         template sass_partial_name('module', :erb), base_path.join(sass_partial_name(name))
+        # TODO: create appender
         #append_import file, base_file_path if append
       end
-
 
       private
 

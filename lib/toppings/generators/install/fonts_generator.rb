@@ -1,6 +1,6 @@
 module Toppings
   module Generators
-    module Setup
+    module Install
       class FontsGenerator < GroupGenerator
 
       end
