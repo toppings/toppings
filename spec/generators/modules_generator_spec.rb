@@ -8,5 +8,14 @@ describe Toppings::Generators::ModulesGenerator do
         subject.should generate(stylesheets_path.join("modules/_fubar.css.sass"))
       end
     end
+
+
+    with_args "ganimed" do
+      it "should append a new module to the modules base file" do
+        subject.should generate(stylesheets_path.join("modules/_ganimed.css.sass")) {
+          File.read(stylesheets_path.join("modules/_base.css.sass")).should =~ /\@import \"ganimed\"/
+        }
+      end
+    end
   end
 end
