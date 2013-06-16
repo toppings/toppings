@@ -15,7 +15,7 @@ module Toppings
     def generate(generator = nil, *args)
       case generator
         when 'module'
-          Toppings::Generators::ModuleGenerator.start(args)
+          Toppings::Generators::ModulesGenerator.start(args)
         else
           say "ERROR: generate was called with no generator argument"
           say "USAGE: valid generators are font | module | setting | setup"

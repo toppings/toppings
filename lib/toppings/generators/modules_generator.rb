@@ -2,7 +2,7 @@ require 'thor/group'
 
 module Toppings
   module Generators
-    class ModuleGenerator < Thor::Group
+    class ModulesGenerator < Thor::Group
       include Thor::Actions
       include Toppings::Helper::PathHelper
       include Toppings::Helper::BaseFileHelper
