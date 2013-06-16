@@ -39,6 +39,10 @@ module Toppings
         @relative_base_path ||= Pathname.new(base_name)
       end
 
+      def append_import(import_file, target_file)
+        append_to_file target_file, "@import \"#{import_file}\" \n"
+      end
+
       module ClassMethods
         def base_name
           @base_name ||= stripped_class_name.gsub(/Generator$/, '').underscore

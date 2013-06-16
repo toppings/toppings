@@ -40,11 +40,6 @@ module Toppings
           append_import file, base_file_path
         end
 
-        def append_import(import_file, target_file)
-          append_to_file target_file, "@import \"#{import_file}\" \n"
-        end
-
-
       end
     end
   end
