@@ -1,5 +1,10 @@
 require 'thor/group'
 
+# require related install generator files
+Dir.glob(File.join(Toppings.gem_root, "**", "install", "*_generator.rb")).each do |generator|
+  require generator
+end
+
 module Toppings
   module Generators
     class InstallGenerator < Thor::Group
