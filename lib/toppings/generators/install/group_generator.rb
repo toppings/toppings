@@ -27,7 +27,7 @@ module Toppings
           end
 
           def templates
-            @templates ||= []
+            @templates ||= Set.new
           end
         end
 

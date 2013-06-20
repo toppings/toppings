@@ -29,7 +29,7 @@ describe Toppings::Generators::Install::GroupGenerator do
       }
 
       describe "with no template assigned, templates" do
-        it { subject.templates.should eq([]) }
+        it { subject.templates.should be_empty }
       end
 
       describe "with a template assigned, templates" do
@@ -46,6 +46,14 @@ describe Toppings::Generators::Install::GroupGenerator do
         end
 
         it { subject.templates.should include('file1', 'file2') }
+      end
+
+      describe "with a template assigned multiple times, templates" do
+        before do
+          subject.with_templates "file1", "file1"
+        end
+
+        it { subject.templates.select() { |template| template == 'file1' }.size.should eq(1) }
       end
 
     end
