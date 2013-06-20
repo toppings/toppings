@@ -21,6 +21,14 @@ describe Toppings::Generators::Install::GroupGenerator do
         }
       end
     end
+
+    context "a group generator with templates" do
+      subject { Toppings::Generators::Install::GroupGenerator }
+
+      describe "with a template assigned" do
+        it { subject.templates.should eq([]) }
+      end
+    end
   end
 
 end
