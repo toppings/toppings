@@ -24,7 +24,7 @@ module Toppings
         end
 
         def create_template_files
-          self.templates.each { |file| group_template_file(file.to_s) } if self.templates?
+          self.templates.each { |file| group_template_file(file) } if self.templates?
         end
 
         private
