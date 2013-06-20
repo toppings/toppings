@@ -9,10 +9,19 @@ module Toppings
         class_attribute :templates
 
         class << self
+          # provides a path build upon the base name of a class as
+          # source root for the thor template engine.
+          #
+          # @return [String] path to the class namespaced template folder
           def source_root
             template_path.join(base_name)
           end
 
+          # dsl method to register certain template files, that should be
+          # made available for the specific generator.
+          #
+          # @param files [*String] one or more template names
+          # @return [Array] returns the list of registered templates
           def with_templates(*files)
             self.templates = files
           end
