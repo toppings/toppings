@@ -23,11 +23,31 @@ describe Toppings::Generators::Install::GroupGenerator do
     end
 
     context "a group generator with templates" do
-      subject { Toppings::Generators::Install::GroupGenerator }
+      subject {
+        # creating a new class on each test here, to avoid side effects
+        Class.new(Toppings::Generators::Install::GroupGenerator)
+      }
 
-      describe "with a template assigned" do
+      describe "with no template assigned, templates" do
         it { subject.templates.should eq([]) }
       end
+
+      describe "with a template assigned, templates" do
+        before do
+          subject.with_templates "file1"
+        end
+
+        it { subject.templates.should include('file1') }
+      end
+
+      describe "with multiple templates assigned, templates" do
+        before do
+          subject.with_templates "file1", "file2"
+        end
+
+        it { subject.templates.should include('file1', 'file2') }
+      end
+
     end
   end
 
