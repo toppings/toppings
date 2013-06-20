@@ -23,7 +23,7 @@ module Toppings
           # @param files [*String] one or more template names
           # @return [Array] returns the list of registered templates
           def with_templates(*files)
-            self.templates = files
+            (self.templates ||= []) << files
           end
         end
 
