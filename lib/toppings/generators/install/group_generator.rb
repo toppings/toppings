@@ -27,11 +27,14 @@ module Toppings
           end
         end
 
+        # creating the relative base file for a generator group and appending it
+        # to the root file located in the stylesheet root.
         def create_base_import_file
           create_file base_file_path
           append_import group_base_name, root_file_path
         end
 
+        # building templated files based on the beforehand registered template files
         def create_template_files
           self.templates.each { |file| group_template_file(file) } if self.templates?
         end
