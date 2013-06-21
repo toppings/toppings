@@ -3,6 +3,17 @@ require_relative 'root_file_generator'
 module Toppings
   module Generators
     module Install
+
+      # the GroupGenerator class provides some default behavior for a given
+      # generator, that extends the GroupGenerator.
+      #
+      # For each groupfile a new group folder is created and a relative base file
+      # is added to it, where included templates will be registered with appropriate
+      # import statements.
+      #
+      # Template pathes and target pathes become available by convention over the
+      # given specific classes base name, where the base name is build upon the classes name
+      # with stripped Generator suffix.
       class GroupGenerator < BaseGenerator
         include Toppings::Helper::BaseFileHelper
 
@@ -26,6 +37,9 @@ module Toppings
             files.each { |file| templates << file }
           end
 
+          # registered templates for a group, that will be made available in the setup
+          #
+          # @return [Set] of registered templates
           def templates
             @templates ||= Set.new
           end
@@ -45,11 +59,18 @@ module Toppings
 
         private
 
+        # copies a template file for the given generator group to the relative base file base.
+        #
+        # @param file [String] template file name
+        # @param append [Boolean] decides about appending the template to the given relative base file.
         def group_template_file(file, append = true)
           template sass_partial_name(file), base_path.join(sass_partial_name(file))
           append_import file, base_file_path if append
         end
 
+        # creates an empty file placed in the relative base path for a generator and appends it to the base file.
+        #
+        # @param file [String] target file name
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
           create_file base_path.join("_#{file}.css.#{Toppings.conf.sass.dialect}")
