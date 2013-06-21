@@ -9,10 +9,6 @@ module Toppings
         relative_base_path.join("base")
       end
 
-      def relative_base_file_path
-        relative_base_path.join(base_file_name)
-      end
-
       def base_file_path
         base_path.join(base_file_name)
       end
@@ -22,13 +18,20 @@ module Toppings
       end
 
       def base_file_name
-        "_base.css.#{Toppings.conf.sass.dialect}"
+        # TODO: make base file name configurable
+        sass_file_name "base", partial: true
       end
 
-      def sass_partial_name(file, type = nil)
-        file_name = %W{_#{file} css #{Toppings.conf.sass.dialect}}
-        file_name << "erb" if type == :erb
-        file_name.join('.')
+      def sass_file_name(file, options = {})
+        sass_file = []
+
+        sass_file.tap do |f|
+          f << (options[:partial] ? "_#{file}" : file)
+          f << Toppings.conf.sass.dialect
+          f << "erb" if options[:type] == :erb
+        end
+
+        sass_file.join('.')
       end
 
       def base_name
