@@ -15,7 +15,6 @@ module Toppings
         def self.source_root
           template_path
         end
-
       end
     end
   end
