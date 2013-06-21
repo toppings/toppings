@@ -63,7 +63,9 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          template sass_partial_name(file), base_path.join(sass_partial_name(file))
+          template sass_file_name(file, partial: true),
+                   base_path.join(sass_file_name(file, partial: true))
+
           append_import file, base_file_path
         end
 
@@ -72,7 +74,7 @@ module Toppings
         # @param file [String] target file name
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
-          create_file base_path.join("_#{file}.css.#{Toppings.conf.sass.dialect}")
+          create_file base_path.join(sass_file_name(file), partial: true)
           append_import file, base_file_path
         end
 

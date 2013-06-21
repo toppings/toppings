@@ -7,16 +7,16 @@ describe Toppings::Generators::Install::GroupGenerator do
       tempdir = Pathname(tempdir)
 
       FileUtils.mkdir_p tempdir.join(stylesheets_path)
-      FileUtils.touch tempdir.join(stylesheets_path).join("toppings.css.sass")
+      FileUtils.touch tempdir.join(stylesheets_path).join("toppings.sass")
     end
 
     context "a group file" do
       it "should be generated" do
-        subject.should generate(stylesheets_path.join("group/_base.css.sass"))
+        subject.should generate(stylesheets_path.join("group/_base.sass"))
       end
 
       it "should be appended to the base file" do
-        subject.should generate(stylesheets_path.join('toppings.css.sass')) { |content|
+        subject.should generate(stylesheets_path.join('toppings.sass')) { |content|
           content.should =~ /\@import \"group\/base\"/
         }
       end

@@ -3,7 +3,7 @@ def stylesheets_path
 end
 
 def root_file
-  stylesheets_path.join('toppings.css.sass')
+  stylesheets_path.join('toppings.sass')
 end
 
 def test_config_path
