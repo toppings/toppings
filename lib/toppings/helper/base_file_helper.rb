@@ -26,7 +26,7 @@ module Toppings
       end
 
       def sass_partial_name(file, type = nil)
-        file_name = %W{_#{file} css #{Toppings.conf.sass.dialect}}
+        file_name = %W{_#{file} #{Toppings.conf.sass.dialect}}
         file_name << "erb" if type == :erb
         file_name.join('.')
       end
