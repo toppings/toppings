@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport", ">= 3.2"
   spec.add_dependency "compass", ">= 0.12.2"
   spec.add_dependency "susy", ">= 1.0.8"
+  spec.add_dependency "modular-scale"
 end
