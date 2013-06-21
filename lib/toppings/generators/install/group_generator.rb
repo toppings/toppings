@@ -62,10 +62,9 @@ module Toppings
         # copies a template file for the given generator group to the relative base file base.
         #
         # @param file [String] template file name
-        # @param append [Boolean] decides about appending the template to the given relative base file.
-        def group_template_file(file, append = true)
+        def group_template_file(file)
           template sass_partial_name(file), base_path.join(sass_partial_name(file))
-          append_import file, base_file_path if append
+          append_import file, base_file_path
         end
 
         # creates an empty file placed in the relative base path for a generator and appends it to the base file.
