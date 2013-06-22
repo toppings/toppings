@@ -3,6 +3,10 @@ module Toppings
     module BaseFileHelper
       extend ActiveSupport::Concern
 
+      included do
+        include Toppings::Helper::SassFileHelper
+      end
+
       private
 
       def group_base_name
@@ -40,10 +44,6 @@ module Toppings
 
       def relative_base_path
         @relative_base_path ||= Pathname.new(base_name)
-      end
-
-      def append_import(import_file, target_file)
-        append_to_file target_file, "@import \"#{import_file}\" \n"
       end
 
       module ClassMethods

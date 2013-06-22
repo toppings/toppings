@@ -1,7 +1,13 @@
 {
   // whether to use sass original style or scss syntax
   "sass": {
-    "dialect": "sass"
+    "dialect": "sass",
+
+    "framework": {
+      "core": "compass",
+      "reset": "compass/reset",
+      "css3": "compass/css3"
+    }
   },
 
   // the name of the given root file where base files will be appended
