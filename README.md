@@ -26,7 +26,31 @@ The toppings gem ships with a binary called `topping` which is basically a wrapp
 
 But beforementioned there is a command for initializing your stylesheet environment, called via `topping install`. Running this command will read the current configuration (give a look to the configuration section for more information) and then create a folder and file structure like you can see below.
 
-<script src="https://gist.github.com/mechanoid/5856595.js"></script>
+```
+stylesheets
+├── fonts
+│   └── _base.sass
+├── helper
+│   ├── _base.sass
+│   └── _debug.sass
+├── layouts
+│   └── _base.sass
+├── modules
+│   └── _base.sass
+├── settings
+│   ├── _base.sass
+│   ├── _borders.sass
+│   ├── _colors.sass
+│   ├── _dimensions.sass
+│   ├── _shadows.sass
+│   └── _typography.sass
+├── setups
+│   ├── _base.sass
+│   ├── _modular_scale.sass
+│   ├── _responsive_grid.sass
+│   └── _vertical_rhythm.sass
+└── toppings.sass
+```
 
 At first you may stumble upon the sass format of the generated files, and yes we decided for the sass style of the language as a default here. Let me start with, that this setting for sure will be configurable, so it is really only a default. But lets discuss our decision over SASS vs. SCSS for short. I argued myself very often against the sass style over the newer SCSS (Sassy CSS) format, because it of course looks a lot more like CSS, as it is the case with HAML and HTML. But unlike HTML which is sometimes whitespace sensitive and so it may not make sense to keep a language layer between you and the markup output, arranging CSS rules is mainly about personal preferences. Many best practices about arranging your css rules, like one rule per line do perfectly match the sassy syntax. And in the end you were writing really good and readable stylesheets without the necessity of writing curly brackets over and over again. Enough commercials for the SASS syntax for now we will keep an eye now for the structure itself.
 
