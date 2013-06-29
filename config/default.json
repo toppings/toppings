@@ -1,7 +1,7 @@
 {
   // whether to use sass original style or scss syntax
   "sass": {
-    "dialect": "scss",
+    "dialect": "sass",
 
     "framework": {
       "core": "compass",
