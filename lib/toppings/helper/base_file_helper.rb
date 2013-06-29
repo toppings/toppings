@@ -31,7 +31,7 @@ module Toppings
 
         sass_file.tap do |f|
           f << (options[:partial] ? "_#{file}" : file)
-          f << Toppings.conf.sass.dialect
+          f << (options[:dialect] || Toppings.conf.sass.dialect)
           f << "erb" if options[:type] == :erb
         end
 

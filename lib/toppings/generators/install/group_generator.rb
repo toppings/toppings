@@ -65,12 +65,12 @@ module Toppings
         # @param file [String] template file name
         def group_template_file(file)
           create_file_from_template!(file)
-          convert_to_scss(base_path.join(sassy_file_name(file, partial: true))) if Toppings.conf.sass.dialect == :scss
+          convert_to_scss(base_path.join(sassy_file_name(file, partial: true, dialect: 'sass'))) if Toppings.conf.sass.dialect == 'scss'
           append_import file, base_file_path
         end
 
         def create_file_from_template!(file)
-          template sassy_file_name(file, partial: true), sass_file_path(file) do |content|
+          template sassy_file_name(file, partial: true, dialect: 'sass'), sass_file_path(file, dialect: 'sass') do |content|
             content if valid_sass?(content)
           end
         end
@@ -85,8 +85,8 @@ module Toppings
         end
 
 
-        def sass_file_path(file)
-          base_path.join(sassy_file_name(file, partial: true))
+        def sass_file_path(file, options = {})
+          base_path.join(sassy_file_name(file, { partial: true }.merge(options)))
         end
       end
     end
