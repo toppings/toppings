@@ -16,6 +16,7 @@ module Toppings
       # with stripped Generator suffix.
       class GroupGenerator < BaseGenerator
         include Toppings::Helper::BaseFileHelper
+        include Toppings::Helper::SassContentHelper
 
         class_attribute :templates
 
@@ -63,8 +64,9 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          template sass_file_name(file, partial: true),
-                   base_path.join(sass_file_name(file, partial: true))
+          template sass_file_name(file, partial: true), base_path.join(sass_file_name(file, partial: true)) do |content|
+            convert_to_scss(content)
+          end
 
           append_import file, base_file_path
         end
