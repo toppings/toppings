@@ -5,11 +5,14 @@ require 'bundler'
 
 
 module Toppings::Helper::SassContentHelper
-  def convert_to_scss(content)
+  def convert_to_scss(file_name)
     # checking sass before converting
-    if valid_sass? content
-      # TODO: convert sass to scss with Sass::Exec::SassConvert
-    end
+    src_file = File.open(file_name)
+    tgt_file = File.open(file_name.to_s + '.scss', 'w')
+
+    #Sass::Exec::SassConvert.new([]).parse!
+    sass_convert = Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", src_file, tgt_file])
+    sass_convert.parse
   end
 
   def valid_sass?(content)
@@ -19,7 +22,7 @@ module Toppings::Helper::SassContentHelper
       Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
     rescue ::Sass::SyntaxError => e
       puts "Sass::SyntaxError:: #{e.message}"
-      #raise e
+      raise e
     rescue => e
       puts "Unknown Exception:: #{e.message}"
       raise e

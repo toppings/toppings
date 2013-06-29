@@ -23,10 +23,10 @@ module Toppings
 
       def base_file_name
         # TODO: make base file name configurable
-        sass_file_name "base", partial: true
+        sassy_file_name "base", partial: true
       end
 
-      def sass_file_name(file, options = {})
+      def sassy_file_name(file, options = {})
         sass_file = []
 
         sass_file.tap do |f|

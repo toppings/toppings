@@ -64,11 +64,15 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          template sass_file_name(file, partial: true), base_path.join(sass_file_name(file, partial: true)) do |content|
-            convert_to_scss(content)
-          end
-
+          create_file_from_template!(file)
+          convert_to_scss(base_path.join(sassy_file_name(file, partial: true))) if Toppings.conf.sass.dialect == :scss
           append_import file, base_file_path
+        end
+
+        def create_file_from_template!(file)
+          template sassy_file_name(file, partial: true), sass_file_path(file) do |content|
+            content if valid_sass?(content)
+          end
         end
 
         # creates an empty file placed in the relative base path for a generator and appends it to the base file.
@@ -76,10 +80,14 @@ module Toppings
         # @param file [String] target file name
         def create_group_file(file)
           # TODO: make file ending style configurable for scss
-          create_file base_path.join(sass_file_name(file), partial: true)
+          create_file base_path.join(sassy_file_name(file), partial: true)
           append_import file, base_file_path
         end
 
+
+        def sass_file_path(file)
+          base_path.join(sassy_file_name(file, partial: true))
+        end
       end
     end
   end

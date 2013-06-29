@@ -12,7 +12,7 @@ module Toppings
 
       def create_module_file
         self.class.base_name = type.pluralize
-        template rescued_sass_partial(type), base_path.join(sass_file_name(name, partial: true))
+        template rescued_sass_partial(type), base_path.join(sassy_file_name(name, partial: true))
         create_file base_file_path, skip: true
         append_import name, base_file_path
       end
@@ -25,11 +25,11 @@ module Toppings
       end
 
       def erb_template(type)
-        sass_file_name(type, type: :erb, partial: true)
+        sassy_file_name(type, type: :erb, partial: true)
       end
 
       def default_template
-        sass_file_name('default', type: :erb, partial: true)
+        sassy_file_name('default', type: :erb, partial: true)
       end
 
       class << self
