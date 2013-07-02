@@ -26,6 +26,8 @@ module Toppings
         sassy_file_name "base", partial: true
       end
 
+
+      # TODO: delete here!!
       def sassy_file_name(file, options = {})
         sass_file = []
 

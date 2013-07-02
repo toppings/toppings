@@ -16,7 +16,6 @@ module Toppings
       # with stripped Generator suffix.
       class GroupGenerator < BaseGenerator
         include Toppings::Helper::BaseFileHelper
-        include Toppings::Helper::SassConversionHelper
 
         class_attribute :templates
 
@@ -64,30 +63,14 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          create_file_from_template!(file)
-          convert_to_scss(base_path.join(sassy_file_name(file, partial: true, dialect: 'sass'))) if Toppings.conf.sass.dialect == 'scss'
+          create_sass_file(file)
           append_import file, base_file_path
         end
 
-        def create_file_from_template!(file)
-          template sassy_file_name(file, partial: true, dialect: 'sass'), sass_file_path(file, dialect: 'sass') do |content|
-            content if valid_sass?(content)
-          end
+        def create_sass_file(file, options = {})
+          Toppings::Generators::SassFileGenerator.new([file], source_root: self.class.source_root, target_path: base_path).invoke_all
         end
 
-        # creates an empty file placed in the relative base path for a generator and appends it to the base file.
-        #
-        # @param file [String] target file name
-        def create_group_file(file)
-          # TODO: make file ending style configurable for scss
-          create_file base_path.join(sassy_file_name(file), partial: true)
-          append_import file, base_file_path
-        end
-
-
-        def sass_file_path(file, options = {})
-          base_path.join(sassy_file_name(file, { partial: true }.merge(options)))
-        end
       end
     end
   end
