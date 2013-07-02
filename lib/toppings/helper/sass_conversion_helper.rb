@@ -4,7 +4,7 @@ require 'compass'
 require 'bundler'
 
 
-module Toppings::Helper::SassContentHelper
+module Toppings::Helper::SassConversionHelper
   def convert_to_scss(file_name)
     # checking sass before converting
     src_file = File.open(file_name)

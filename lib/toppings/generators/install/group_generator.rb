@@ -16,7 +16,7 @@ module Toppings
       # with stripped Generator suffix.
       class GroupGenerator < BaseGenerator
         include Toppings::Helper::BaseFileHelper
-        include Toppings::Helper::SassContentHelper
+        include Toppings::Helper::SassConversionHelper
 
         class_attribute :templates
 
