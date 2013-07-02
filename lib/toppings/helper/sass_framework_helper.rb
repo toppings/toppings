@@ -4,7 +4,7 @@ module Toppings
       extend ActiveSupport::Concern
 
       included do
-        include Toppings::Helper::SassFileHelper
+        include Toppings::Helper::SassContentHelper
       end
 
       private
