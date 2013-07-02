@@ -32,6 +32,7 @@ module Toppings::Helper::SassConversionHelper
   end
 
   def load_dependencies
+    # TODO: make dependencies configurable
     %w{susy}.each { |dep| require dep }
     update_load_pathes
   end
