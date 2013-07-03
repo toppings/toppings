@@ -5,7 +5,6 @@ require 'digest'
 
 module Toppings::Helper::SassConversionHelper
 
-
   def convert_to_scss(content)
     file_name = Digest::MD5.new.update(content)
     # checking sass before converting
