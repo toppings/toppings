@@ -1,6 +1,6 @@
 module Toppings
   module Helper
-    module SassFileHelper
+    module SassContentHelper
       extend ActiveSupport::Concern
 
       private

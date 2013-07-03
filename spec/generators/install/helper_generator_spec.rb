@@ -12,7 +12,7 @@ describe Toppings::Generators::Install::HelperGenerator do
   context "with naming conventions" do
     it "should be generated" do
       subject.should generate(stylesheets_path.join("helper/_debug.sass")) { |content|
-        sass_check(content).should be_true
+        valid_sass?(content).should be_true
       }
 
     end

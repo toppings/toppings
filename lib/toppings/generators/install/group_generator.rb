@@ -63,19 +63,12 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          template sass_file_name(file, partial: true),
-                   base_path.join(sass_file_name(file, partial: true))
-
+          create_sass_file(file)
           append_import file, base_file_path
         end
 
-        # creates an empty file placed in the relative base path for a generator and appends it to the base file.
-        #
-        # @param file [String] target file name
-        def create_group_file(file)
-          # TODO: make file ending style configurable for scss
-          create_file base_path.join(sass_file_name(file), partial: true)
-          append_import file, base_file_path
+        def create_sass_file(file, options = {})
+          Toppings::Generators::SassFileGenerator.new([file], source_root: self.class.source_root, target_path: base_path).invoke_all
         end
 
       end

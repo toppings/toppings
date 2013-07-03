@@ -2,6 +2,8 @@
   // whether to use sass original style or scss syntax
   "sass": {
     "dialect": "sass",
+    // should not be changed
+    "template_dialect": "sass",
 
     "framework": {
       "core": "compass",
