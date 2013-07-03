@@ -28,19 +28,17 @@ module Toppings
       end
 
       def create_file_from_template
-        template sassy_file_name(file_name, dialect: Toppings.conf.sass.template_dialect),
-                 base_path.join(sassy_file_name(file_name, dialect: 'sass')) do |content|
-
+        template sassy_file_name(file_name, dialect: Toppings.conf.sass.template_dialect), file_path(file_name) do |content|
           content if valid_sass?(content)
+          convert_to_scss(content) if Toppings.conf.sass.dialect == 'scss'
         end
       end
 
-      # TODO: try to get conversion act inplace instead on a file, if possible
-      def convert_to_target_dialect
-        convert_to_scss(base_path.join(sassy_file_name(file_name, partial: true, dialect: 'sass'))) if Toppings.conf.sass.dialect == 'scss'
-      end
-
       private
+
+      def file_path(file_name)
+        base_path.join(sassy_file_name(file_name))
+      end
 
       def base_path
         options[:target_path]

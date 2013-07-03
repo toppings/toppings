@@ -1,18 +1,30 @@
+require 'tempfile'
 require 'sass'
 require 'sass/exec'
-require 'compass'
-require 'bundler'
-
+require 'digest'
 
 module Toppings::Helper::SassConversionHelper
-  def convert_to_scss(file_name)
-    # checking sass before converting
-    src_file = File.open(file_name)
-    tgt_file = File.open(file_name.to_s + '.scss', 'w')
 
-    #Sass::Exec::SassConvert.new([]).parse!
-    sass_convert = Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", src_file, tgt_file])
-    sass_convert.parse
+
+  def convert_to_scss(content)
+    file_name = Digest::MD5.new.update(content)
+    # checking sass before converting
+    @source_file = Tempfile.new("#{file_name}_source")
+    @target_file = Tempfile.new("#{file_name}_target")
+
+    # prepare source
+    @source_file.write(content)
+    @source_file.rewind
+
+    # convert source content to the target format, placed in the target file
+    Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", @source_file, @target_file]).parse
+
+    # read result from target file
+    @target_file.rewind
+    @target_file.read
+  ensure
+    [@source_file, @target_file].each(&:close)
+    [@source_file, @target_file].each(&:unlink)
   end
 
   def valid_sass?(content)
