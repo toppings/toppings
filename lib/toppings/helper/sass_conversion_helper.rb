@@ -49,14 +49,12 @@ module Toppings::Helper::SassConversionHelper
   end
 
   def load_compass_paths
-    load_paths.concat Compass.configuration.sass_load_paths
+    load_paths.merge Compass.configuration.sass_load_paths
   end
 
   def load_paths
     # TODO: sass_engine_options[:load_paths].uniq!
-    sass_engine_options[:load_paths] ||= []
-    sass_engine_options[:load_paths].uniq!
-    sass_engine_options[:load_paths]
+    sass_engine_options[:load_paths] ||= Set.new
   end
 
   def sass_engine_options
