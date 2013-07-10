@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'toppings/helper'
 require 'toppings/helper/sass_conversion_helper'
 require 'compass'
 
