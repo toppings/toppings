@@ -55,6 +55,8 @@ module Toppings::Helper::SassConversionHelper
   def load_paths
     # TODO: sass_engine_options[:load_paths].uniq!
     sass_engine_options[:load_paths] ||= []
+    sass_engine_options[:load_paths].uniq!
+    sass_engine_options[:load_paths]
   end
 
   def sass_engine_options
