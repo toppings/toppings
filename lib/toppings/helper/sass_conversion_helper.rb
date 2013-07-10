@@ -6,7 +6,7 @@ require 'digest'
 module Toppings::Helper::SassConversionHelper
 
   def convert_to_scss(content)
-    file_name = Digest::MD5.new.update(content)
+    file_name    = Digest::MD5.new.update(content)
     # checking sass before converting
     @source_file = Tempfile.new("#{file_name}_source")
     @target_file = Tempfile.new("#{file_name}_target")
@@ -45,12 +45,18 @@ module Toppings::Helper::SassConversionHelper
   def load_dependencies
     # TODO: make dependencies configurable
     %w{susy}.each { |dep| require dep }
-    update_load_pathes
+    load_compass_paths
   end
 
-  def update_load_pathes
+  def load_compass_paths
+    load_paths.concat Compass.configuration.sass_load_paths
+  end
+
+  def load_paths
+    # TODO: sass_engine_options[:load_paths].uniq!
     sass_engine_options[:load_paths] ||= []
-    sass_engine_options[:load_paths] += Compass.configuration.sass_load_paths
+    sass_engine_options[:load_paths].uniq!
+    sass_engine_options[:load_paths]
   end
 
   def sass_engine_options
