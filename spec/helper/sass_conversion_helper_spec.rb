@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'toppings/helper'
-require 'toppings/helper/sass_conversion_helper'
 require 'compass'
 
 describe Toppings::Helper::SassConversionHelper do
@@ -26,12 +24,12 @@ describe Toppings::Helper::SassConversionHelper do
         describe "each load path should appear only once" do
           it {
             subject.load_paths.select { |load_path|
-            load_path.to_s =~ /compass\/stylesheets/
-          }.size.should eq(1)
+              load_path.to_s =~ /compass\/stylesheets/
+            }.size.should eq(1)
           }
         end
-
       end
+
       context "with compass load paths included" do
         before do
           subject.load_compass_paths
@@ -72,7 +70,7 @@ describe Toppings::Helper::SassConversionHelper do
   end
 
   context "in approving given sass content" do
-    context "assuming external sass dependencies" do
+    context "and loading external sass dependencies" do
       before do
         # we mock a dumb engine here, because we check the dependency loading only
         # before we dive deeper into the sass engine creation itself.
@@ -88,15 +86,40 @@ describe Toppings::Helper::SassConversionHelper do
         subject.should_receive(:load_dependencies)
         subject.valid_sass?("fubar")
       end
-
       # TODO: make the dependencies configurable and specify its behavior here! (fh)
+    end
+
+    context "checking the given sass content" do
+      it "valid content should give a positive result" do
+        subject.valid_sass?(subject.valid_sass_content).should be_true
+      end
+
+      it "invalid content should give a negative result" do
+        expect { subject.valid_sass?(subject.invalid_sass_content) }.to raise_error
+      end
     end
 
   end
 
 end
 
-
 class SassConversionTest
   include Toppings::Helper::SassConversionHelper
+
+  def invalid_sass_content
+    <<-eos
+body { background: red; }
+    eos
+  end
+
+  def valid_sass_content
+    <<-eos
+@import "compass"
+@import "susy"
+
+body
+  background: black
+    eos
+  end
 end
+
