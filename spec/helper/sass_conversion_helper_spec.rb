@@ -2,7 +2,11 @@ require 'spec_helper'
 require 'compass'
 
 describe Toppings::Helper::SassConversionHelper do
-  subject { SassConversionTest.new }
+  subject {
+    @current = SassConversionTest.new
+    @current.stub :say
+    @current
+  }
 
   describe "enabling a sass engine, with custom options" do
     it { subject.sass_engine_options.should be_kind_of(Hash) }
@@ -103,7 +107,7 @@ describe Toppings::Helper::SassConversionHelper do
 
 end
 
-class SassConversionTest
+class SassConversionTest < Thor
   include Toppings::Helper::SassConversionHelper
 
   def invalid_sass_content

@@ -32,6 +32,7 @@ module Toppings::Helper::SassConversionHelper
     result = begin
       Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
     rescue ::Sass::SyntaxError => e
+      say e.message
       false
     end
 
