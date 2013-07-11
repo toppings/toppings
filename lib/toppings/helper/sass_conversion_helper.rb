@@ -29,17 +29,13 @@ module Toppings::Helper::SassConversionHelper
   def valid_sass?(content)
     load_dependencies
 
-    r = begin
+    result = begin
       Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
     rescue ::Sass::SyntaxError => e
-      puts "Sass::SyntaxError:: #{e.message}"
-      raise e
-    rescue => e
-      puts "Unknown Exception:: #{e.message}"
-      raise e
+      false
     end
 
-    !r.nil?
+    !!result
   end
 
   def load_dependencies

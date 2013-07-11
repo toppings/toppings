@@ -95,7 +95,7 @@ describe Toppings::Helper::SassConversionHelper do
       end
 
       it "invalid content should give a negative result" do
-        expect { subject.valid_sass?(subject.invalid_sass_content) }.to raise_error
+        subject.valid_sass?(subject.invalid_sass_content).should be_false
       end
     end
 
