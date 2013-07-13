@@ -105,9 +105,42 @@ describe Toppings::Helper::SassConversionHelper do
 
   end
 
+  context "in converting given sass content" do
+    context "we initialize temporary files for source and target of the conversion" do
+      before do
+        subject.send :init_tempfiles_for_conversion, subject.valid_sass_content
+      end
+
+      describe "so the source file" do
+        it { subject.source_file.should_not be_nil }
+        it { subject.source_file.read.should include(subject.valid_sass_content) }
+      end
+
+      describe "and the target file" do
+        it { subject.target_file.should_not be_nil }
+      end
+    end
+
+    context "by providing valid sass content" do
+      before do
+        @sass_engine = mock(Sass::Exec::SassConvert)
+        @sass_engine.stub(:parse).and_return("converted_sass_content")
+      end
+
+      # decided for a not black boxed integration spec here, to ensure the correct result after conversion
+      it "the conversion should return the correct content and unlink the temp files" do
+        subject.convert_to_scss(subject.valid_sass_content).should include("body {\n  background: black;\n}")
+
+        subject.source_file.path.should be_nil
+        subject.target_file.path.should be_nil
+      end
+
+    end
+  end
+
 end
 
-class SassConversionTest < Thor
+class SassConversionTest
   include Toppings::Helper::SassConversionHelper
 
   def invalid_sass_content
