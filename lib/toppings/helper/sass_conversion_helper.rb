@@ -2,6 +2,7 @@ require 'tempfile'
 require 'sass'
 require 'sass/exec'
 require 'sass/util'
+require 'compass'
 require 'digest'
 
 module Toppings::Helper::SassConversionHelper
@@ -40,8 +41,7 @@ module Toppings::Helper::SassConversionHelper
   end
 
   def load_dependencies
-    # TODO: make dependencies configurable
-    %w{susy}.each { |dep| require dep }
+    Toppings::SASS_DEPENDENCIES.each { |dep| require dep.to_s }
     load_compass_paths
   end
 
