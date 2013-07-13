@@ -78,7 +78,7 @@ describe Toppings::Helper::SassConversionHelper do
       before do
         # we mock a dumb engine here, because we check the dependency loading only
         # before we dive deeper into the sass engine creation itself.
-        @sass_engine = mock("SassEngine")
+        @sass_engine = double("SassEngine")
         @sass_engine.stub(:render).and_return(true)
 
         Sass::Engine.stub(:new).and_return(@sass_engine)
@@ -123,7 +123,7 @@ describe Toppings::Helper::SassConversionHelper do
 
     context "by providing valid sass content" do
       before do
-        @sass_engine = mock(Sass::Exec::SassConvert)
+        @sass_engine = double(Sass::Exec::SassConvert)
         @sass_engine.stub(:parse).and_return("converted_sass_content")
       end
 
