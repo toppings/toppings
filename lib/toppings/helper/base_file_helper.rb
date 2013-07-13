@@ -11,7 +11,7 @@ module Toppings
       private
 
       def group_base_name
-        relative_base_path.join("base")
+        relative_base_path.join(Toppings.conf.stylesheets.relative_base_file)
       end
 
       def base_file_path
