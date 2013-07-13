@@ -23,8 +23,7 @@ module Toppings
       end
 
       def base_file_name
-        # TODO: make base file name configurable
-        sassy_file_name "base"
+        sassy_file_name Toppings.conf.stylesheets.relative_base_file
       end
 
       def base_name

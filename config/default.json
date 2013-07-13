@@ -15,6 +15,7 @@
   // the name of the given root file where base files will be appended
   "stylesheets": {
     "root_folder": "stylesheets",
-    "root_file": "toppings"
+    "root_file": "toppings",
+    "relative_base_file": "base"
   }
 }
