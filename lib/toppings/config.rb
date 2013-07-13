@@ -1,3 +1,4 @@
+require 'active_support/core_ext/hash/deep_merge'
 require 'ostruct'
 
 module Toppings
@@ -17,7 +18,7 @@ module Toppings
       end
 
       def joined_config
-        default_config.merge(custom_config)
+        default_config.deep_merge(custom_config)
       end
 
       def custom_config
