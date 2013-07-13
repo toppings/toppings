@@ -6,21 +6,13 @@ require 'digest'
 module Toppings::Helper::SassConversionHelper
 
   def convert_to_scss(content)
-    file_name    = Digest::MD5.new.update(content)
-    # checking sass before converting
-    @source_file = Tempfile.new("#{file_name}_source")
-    @target_file = Tempfile.new("#{file_name}_target")
-
-    # prepare source
-    @source_file.write(content)
-    @source_file.rewind
+    init_tempfiles_for_conversion(content)
 
     # convert source content to the target format, placed in the target file
+    # TODO: make conversion more dynamic, by allowing conversion from scss to sass too.
     Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", @source_file, @target_file]).parse
 
-    # read result from target file
-    @target_file.rewind
-    @target_file.read
+    converted_content
   ensure
     [@source_file, @target_file].each(&:close)
     [@source_file, @target_file].each(&:unlink)
@@ -29,14 +21,12 @@ module Toppings::Helper::SassConversionHelper
   def valid_sass?(content)
     load_dependencies
 
-    result = begin
+    begin
       Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
     rescue ::Sass::SyntaxError => e
       say e.message
       false
     end
-
-    !!result
   end
 
   def load_dependencies
@@ -50,7 +40,6 @@ module Toppings::Helper::SassConversionHelper
   end
 
   def load_paths
-    # TODO: sass_engine_options[:load_paths].uniq!
     sass_engine_options[:load_paths] ||= Set.new
   end
 
@@ -58,4 +47,23 @@ module Toppings::Helper::SassConversionHelper
     @sass_engine_options ||= {}
   end
 
+  private
+
+  def init_tempfiles_for_conversion(content)
+    file_name    = Digest::MD5.new.update(content)
+    @source_file = Tempfile.new("#{file_name}_source")
+    @target_file = Tempfile.new("#{file_name}_target")
+
+    write_source(content)
+  end
+
+  def write_source(content)
+    @source_file.write(content)
+    @source_file.rewind
+  end
+
+  def converted_content
+    @target_file.rewind
+    @target_file.read
+  end
 end
