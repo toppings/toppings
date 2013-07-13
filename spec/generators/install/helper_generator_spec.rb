@@ -12,12 +12,8 @@ describe Toppings::Generators::Install::HelperGenerator do
   context "providing some useful helper files" do
     describe "a debug helper" do
       it "should be created" do
-        subject.should generate(stylesheets_path.join("helper/_debug.sass")) { |content|
-
-          # specifications for the generated content
-          valid_sass?(content).should(be_true)
+        subject.should generate_valid_sass_file(stylesheets_path.join("helper/_debug.sass")) { |content|
           content.should include('$debug-color: #fff')
-
         }
       end
     end

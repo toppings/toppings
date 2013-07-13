@@ -5,6 +5,7 @@ require 'coveralls'
 Coveralls.wear!
 
 require 'support/path_helper'
+require 'support/sass_generator_helper'
 
 require 'thor'
 require 'toppings/cli'
