@@ -9,7 +9,7 @@ module Toppings
 
       # TODO: base file name has to be configurable
       def root_file_path
-        stylesheets_path.join(sassy_file_name(Toppings.conf.stylesheets.root_file))
+        stylesheets_path.join(sassy_file_name(Toppings.conf.stylesheets.root_file, standalone: true))
       end
 
       module ClassMethods

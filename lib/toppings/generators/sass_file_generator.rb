@@ -5,6 +5,7 @@ module Toppings
     class SassFileGenerator < Thor::Group
       include Thor::Actions
       include Toppings::Helper::SassConversionHelper
+      include Toppings::Helper::SassFileHelper
 
       argument :file_name
       class_option :target_path
@@ -42,19 +43,6 @@ module Toppings
 
       def base_path
         options[:target_path]
-      end
-
-
-      def sassy_file_name(file, options = {})
-        sass_file = []
-
-        sass_file.tap do |f|
-          f << (options[:standalone] ? file : "_#{file}")
-          f << (options[:dialect] || Toppings.conf.sass.dialect)
-          f << "erb" if options[:type] == :erb
-        end
-
-        sass_file.join('.')
       end
     end
   end

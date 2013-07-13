@@ -5,6 +5,7 @@ module Toppings
 
       included do
         include Toppings::Helper::SassContentHelper
+        include Toppings::Helper::SassFileHelper
       end
 
       private
@@ -23,21 +24,7 @@ module Toppings
 
       def base_file_name
         # TODO: make base file name configurable
-        sassy_file_name "base", partial: true
-      end
-
-
-      # TODO: delete here!!
-      def sassy_file_name(file, options = {})
-        sass_file = []
-
-        sass_file.tap do |f|
-          f << (options[:partial] ? "_#{file}" : file)
-          f << (options[:dialect] || Toppings.conf.sass.dialect)
-          f << "erb" if options[:type] == :erb
-        end
-
-        sass_file.join('.')
+        sassy_file_name "base"
       end
 
       def base_name
