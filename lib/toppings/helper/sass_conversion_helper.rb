@@ -1,45 +1,42 @@
 require 'tempfile'
 require 'sass'
 require 'sass/exec'
+require 'sass/util'
 require 'digest'
 
 module Toppings::Helper::SassConversionHelper
+  extend ActiveSupport::Concern
+
+  included do
+    attr_accessor :source_file, :target_file
+  end
 
   def convert_to_scss(content)
-    file_name    = Digest::MD5.new.update(content)
-    # checking sass before converting
-    @source_file = Tempfile.new("#{file_name}_source")
-    @target_file = Tempfile.new("#{file_name}_target")
-
-    # prepare source
-    @source_file.write(content)
-    @source_file.rewind
+    init_tempfiles_for_conversion(content)
 
     # convert source content to the target format, placed in the target file
-    Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", @source_file, @target_file]).parse
+    # TODO: make conversion more dynamic, by allowing conversion from scss to sass too.
+    ::Sass::Util.silence_sass_warnings do
+      Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", source_file, target_file]).parse
+    end
 
-    # read result from target file
-    @target_file.rewind
-    @target_file.read
+    converted_content
   ensure
-    [@source_file, @target_file].each(&:close)
-    [@source_file, @target_file].each(&:unlink)
+    [source_file, target_file].each(&:close)
+    [source_file, target_file].each(&:unlink)
   end
 
   def valid_sass?(content)
     load_dependencies
 
-    r = begin
-      Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
-    rescue ::Sass::SyntaxError => e
-      puts "Sass::SyntaxError:: #{e.message}"
-      raise e
-    rescue => e
-      puts "Unknown Exception:: #{e.message}"
-      raise e
+    ::Sass::Util.silence_sass_warnings do
+      begin
+        Sass::Engine.new(content, sass_engine_options.merge(check_syntax: true)).render
+      rescue ::Sass::SyntaxError => e
+        say e.message
+        false
+      end
     end
-
-    !r.nil?
   end
 
   def load_dependencies
@@ -53,7 +50,6 @@ module Toppings::Helper::SassConversionHelper
   end
 
   def load_paths
-    # TODO: sass_engine_options[:load_paths].uniq!
     sass_engine_options[:load_paths] ||= Set.new
   end
 
@@ -61,4 +57,23 @@ module Toppings::Helper::SassConversionHelper
     @sass_engine_options ||= {}
   end
 
+  private
+
+  def init_tempfiles_for_conversion(content)
+    file_name    = Digest::MD5.new.update(content)
+    @source_file = Tempfile.new("#{file_name}_source")
+    @target_file = Tempfile.new("#{file_name}_target")
+
+    write_source(content)
+  end
+
+  def write_source(content)
+    source_file.write(content)
+    source_file.rewind
+  end
+
+  def converted_content
+    target_file.rewind
+    target_file.read
+  end
 end

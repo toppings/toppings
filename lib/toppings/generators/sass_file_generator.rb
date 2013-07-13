@@ -30,7 +30,7 @@ module Toppings
       def create_file_from_template
         template sassy_file_name(file_name, dialect: Toppings.conf.sass.template_dialect), file_path(file_name) do |content|
           content if valid_sass?(content)
-          convert_to_scss(content) if Toppings.conf.sass.dialect == 'scss'
+          Toppings.conf.sass.dialect == 'scss' ? convert_to_scss(content) : content
         end
       end
 
