@@ -21,10 +21,10 @@ Installing toppings should be easy with standard gem mananig, because it does no
 
 ### Usage
 
-The toppings gem ships with a binary called `topping` which is basically a wrapper for some) [Thor](…)-tasks and provides a similar syntax as the rails binary does for generation tasks.
+The toppings gem ships with a binary called `topping` which is basically a wrapper for some) [Thor LINK IS MISSING](…)-tasks and provides a similar syntax as the rails binary does for generation tasks.
 (As a little side note, keep in mind to run `rbenv rehash` when using rbenv for managing your rubies, to create a binary shim, that links properly to the installed gem.)
 
-But beforementioned there is a command for initializing your stylesheet environment, called via `topping install`. Running this command will read the current configuration (give a look to the configuration section for more information) and then create a folder and file structure like you can see below.
+But beforementioned there is a command for initializing your stylesheet environment called via `topping install`. Running this command will read the current configuration (give a look to the configuration section for more information) and then create a folder and file structure like you can see below.
 
 ```
 stylesheets
@@ -52,14 +52,15 @@ stylesheets
 └── toppings.sass
 ```
 
-At first you may stumble upon the sass format of the generated files, and yes we decided for the sass style of the language as a default here. Let me start with, that this setting for sure will be configurable, so it is really only a default. But lets discuss our decision over SASS vs. SCSS for short. I argued myself very often against the sass style over the newer SCSS (Sassy CSS) format, because it of course looks a lot more like CSS, as it is the case with HAML and HTML. But unlike HTML which is sometimes whitespace sensitive and so it may not make sense to keep a language layer between you and the markup output, arranging CSS rules is mainly about personal preferences. Many best practices about arranging your css rules, like one rule per line do perfectly match the sassy syntax. And in the end you were writing really good and readable stylesheets without the necessity of writing curly brackets over and over again. Enough commercials for the SASS syntax for now we will keep an eye now for the structure itself.
+At first you may stumble upon the sass format of the generated files, and yes we decided for the sass style of the language as a default here. Let me start with, that this setting for sure is configurable [LINK TO SASS DIALECT CONFIG HERE](…), so it is really only a default. But lets discuss our decision over SASS vs. SCSS for short. I argued myself very often against the sass style over the newer SCSS (Sassy CSS) format, because it of course looks a lot more like CSS, as it is the case with HAML and HTML. But unlike HTML which is sometimes whitespace sensitive and where it may not make sense to keep a language layer between you and the markup output, arranging CSS rules is mainly about personal preferences,   and not about language style. Many best practices about arranging your css rules, like one rule per line do perfectly match the sassy syntax. And in the end you were writing really good and readable stylesheets without the necessity of writing curly brackets over and over again. Enough commercials for now so we can get an eye  on the structure itself.
 
-In the root of the stylesheets folder, you'll mention a toppings.sass file (and yes the name is configurable ;))
+When we start bottom to the top, we will mention a toppings.sass file in the root of our stylesheets folder (and yes the name of the file and the folder name and path is configurable [LINKS TO CONFIGURATIONS FOR ROOT FILE NAME AND PATH](…)). This file is responsible for the load order of our application framework and it should not ship any other content to keep our environment clean and simple.
+That means you will find a bunch of imports including compass, your grid framework of choice (in the moment it is susy ;))  and a relative base file for each style group we listed above. These relative stylesheets encapsulate each concern by packing up the imports of the specific group, so that we just include or exclude an import of a base file to enable or disable a stylesheet group, like settings, modules and so on. More detailed information we will provide in the sass documentation of the generated files.
 
 
 ### Configuration
 
-
+t.b.d
 
 
 
