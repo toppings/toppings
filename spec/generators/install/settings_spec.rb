@@ -9,6 +9,12 @@ describe Toppings::Generators::Install::SettingsGenerator do
     FileUtils.touch tempdir.join(stylesheets_path).join("toppings.sass")
   end
 
+  context "as a group of stylesheets" do
+    it "should provide a relative base file" do
+      subject.should generate(stylesheets_path.join("settings/_base.sass"))
+    end
+  end
+
   context "providing some base library settings files" do
     describe "with some colors" do
       it "should be added" do

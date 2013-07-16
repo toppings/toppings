@@ -9,6 +9,12 @@ describe Toppings::Generators::Install::SetupsGenerator do
     FileUtils.touch tempdir.join(stylesheets_path).join("toppings.sass")
   end
 
+  context "as a group of stylesheets" do
+    it "should provide a relative base file" do
+      subject.should generate(stylesheets_path.join("setups/_base.sass"))
+    end
+  end
+
   context "providing some base library setup files" do
     describe "the compass vertical grid system" do
       it "should be added" do

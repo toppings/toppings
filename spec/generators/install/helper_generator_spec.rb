@@ -9,6 +9,12 @@ describe Toppings::Generators::Install::HelperGenerator do
     FileUtils.touch tempdir.join(stylesheets_path).join("toppings.sass")
   end
 
+  context "as a group of stylesheets" do
+    it "should provide a relative base file" do
+      subject.should generate(stylesheets_path.join("helper/_base.sass"))
+    end
+  end
+
   context "providing some useful helper files" do
     describe "a debug helper" do
       it "should be created" do
