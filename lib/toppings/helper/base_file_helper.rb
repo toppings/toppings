@@ -26,12 +26,12 @@ module Toppings
         sassy_file_name Toppings.conf.stylesheets.relative_base_file
       end
 
-      def base_name
-        self.class.base_name
-      end
-
       def relative_base_path
         @relative_base_path ||= Pathname.new(base_name)
+      end
+
+      def base_name
+        self.class.base_name
       end
 
       module ClassMethods
@@ -43,6 +43,8 @@ module Toppings
           @base_name ||= stripped_class_name.gsub(/Generator$/, '').underscore
         end
 
+        # As base for our naming conventions we want the class name only,
+        # without any module space
         def stripped_class_name
           name.demodulize
         end
