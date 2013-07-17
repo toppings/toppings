@@ -4,10 +4,8 @@ describe Toppings::Generators::Install::GroupGenerator do
 
   describe "sporting multiple stylesheet files" do
     within_source_root do |tempdir|
-      tempdir = Pathname(tempdir)
-
-      FileUtils.mkdir_p tempdir.join(stylesheets_path)
-      FileUtils.touch tempdir.join(stylesheets_path).join("toppings.sass")
+      create_stylesheets_folder(tempdir)
+      create_dummy_root_file(tempdir)
     end
 
     context "a group file" do
