@@ -10,7 +10,7 @@ module Toppings
       argument :type
       argument :name
 
-      def create_module_file
+      def create_component_file
         self.class.base_name = type.pluralize
         template rescued_sass_partial(type), base_path.join(sassy_file_name(name, partial: true))
         create_file base_file_path, skip: true
