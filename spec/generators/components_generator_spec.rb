@@ -13,7 +13,7 @@ describe Toppings::Generators::ComponentsGenerator do
       with_args "ganimed" do
         it "should append a new module to the modules base file" do
           subject.should generate(stylesheets_path.join("modules/_ganimed.sass")) {
-            File.read(stylesheets_path.join("modules/_base.sass")).should =~ /\@import \"ganimed\"/
+            File.read(stylesheets_path.join("modules/_index.sass")).should =~ /\@import \"ganimed\"/
           }
         end
       end
@@ -31,7 +31,7 @@ describe Toppings::Generators::ComponentsGenerator do
         with_args "fubar" do
           it "should append a new settings file to the settings base file" do
             subject.should generate(stylesheets_path.join("settings/_fubar.sass")) {
-              File.read(stylesheets_path.join("settings/_base.sass")).should =~ /\@import \"fubar\"/
+              File.read(stylesheets_path.join("settings/_index.sass")).should =~ /\@import \"fubar\"/
             }
           end
         end

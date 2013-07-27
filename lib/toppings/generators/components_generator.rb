@@ -6,6 +6,7 @@ module Toppings
       include Thor::Actions
       include Toppings::Helper::PathHelper
       include Toppings::Helper::BaseFileHelper
+      include Toppings::Helper::IndexFileHelper
 
       argument :type
       argument :name
