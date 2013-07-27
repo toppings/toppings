@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Toppings
   module Helper
     module GeneratorRegistrationHelper
@@ -6,7 +7,7 @@ module Toppings
       def register_generator(*generators)
         options = generators.last.is_a?(Hash) ? generators.pop : {}
 
-        raise "missing option :group for generator registration" unless options[:group]
+        raise 'missing option :group for generator registration' unless options[:group]
         group = options[:group]
 
         generators.each do |generator|
@@ -27,7 +28,7 @@ module Toppings
       end
 
       def generators_module_space
-        "Toppings::Generators"
+        'Toppings::Generators'
       end
 
     end

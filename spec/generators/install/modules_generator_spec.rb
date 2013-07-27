@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Toppings::Generators::Install::ModulesGenerator do
@@ -7,8 +8,8 @@ describe Toppings::Generators::Install::ModulesGenerator do
     create_dummy_root_file(tempdir)
   end
 
-  context "as a group of stylesheets" do
-    it "should provide a relative base file" do
+  context 'as a group of stylesheets' do
+    it 'should provide a relative base file' do
       subject.should generate(stylesheets_path.join("modules/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
     end
   end

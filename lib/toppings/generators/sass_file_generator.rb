@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'thor/group'
 
 module Toppings
@@ -13,15 +14,7 @@ module Toppings
       class_option :standalone
 
       class << self
-        # TODO: Crappy solution i know :/ Find out if this can be achieved better with thor board functionality
-        def source_root
-          @current_source_root
-        end
-
-        # TODO: Crappy solution (Part II) i know :/ Find out if this can be achieved better with thor board functionality
-        def source_root=(source_root)
-          @current_source_root = source_root
-        end
+        attr_accessor :source_root
       end
 
       def set_current_source_root

@@ -1,7 +1,8 @@
+# encoding: utf-8
 require 'thor/group'
 
 # require related install generator files
-Dir.glob(File.join(Toppings.gem_root, "**", "install", "*_generator.rb")).each do |generator|
+Dir.glob(File.join(Toppings.gem_root, '**', 'install', '*_generator.rb')).each do |generator|
   require generator
 end
 
@@ -12,7 +13,7 @@ module Toppings
       include Toppings::Helper::GeneratorRegistrationHelper
 
       def notify_invoke
-        say "invoke InstallGenerator"
+        say 'invoke InstallGenerator'
       end
 
       def install_framework_structure

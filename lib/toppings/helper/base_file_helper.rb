@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Toppings
   module Helper
     module BaseFileHelper
@@ -6,6 +7,8 @@ module Toppings
       included do
         include Toppings::Helper::SassContentHelper
         include Toppings::Helper::SassFileHelper
+
+        self.class.send :attr_writer, :base_name
       end
 
       private
@@ -24,9 +27,6 @@ module Toppings
       end
 
       module ClassMethods
-        def base_name=(name)
-          @base_name = name
-        end
 
         def base_name
           @base_name ||= stripped_class_name.gsub(/Generator$/, '').underscore
