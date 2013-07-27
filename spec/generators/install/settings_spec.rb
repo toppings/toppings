@@ -9,7 +9,7 @@ describe Toppings::Generators::Install::SettingsGenerator do
 
   context "as a group of stylesheets" do
     it "should provide a relative base file" do
-      subject.should generate(stylesheets_path.join("settings/_base.sass"))
+      subject.should generate(stylesheets_path.join("settings/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
     end
   end
 

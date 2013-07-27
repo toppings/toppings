@@ -10,9 +10,6 @@ module Toppings
 
       private
 
-      def base_file_path
-        base_path.join(base_file_name)
-      end
 
       def base_path
         @base_path ||= stylesheets_path.join(relative_base_path)

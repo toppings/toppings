@@ -16,6 +16,6 @@
   "stylesheets": {
     "root_folder": "stylesheets",
     "root_file": "toppings",
-    "relative_base_file": "base"
+    "relative_index_file": "index"
   }
 }

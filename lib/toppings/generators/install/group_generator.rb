@@ -51,8 +51,8 @@ module Toppings
         # creating the relative base file for a generator group and appending it
         # to the root file located in the stylesheet root.
         def create_base_import_file
-          create_file base_file_path
-          append_import group_base_name, root_file_path
+          create_file index_file_path
+          append_import relative_index_name, root_file_path
         end
 
         # building templated files based on the beforehand registered template files
@@ -67,7 +67,7 @@ module Toppings
         # @param file [String] template file name
         def group_template_file(file)
           create_sass_file(file)
-          append_import file, base_file_path
+          append_import file, index_file_path
         end
 
         def create_sass_file(file, options = {})

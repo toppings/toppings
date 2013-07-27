@@ -9,8 +9,12 @@ module Toppings
 
       private
 
-      def index_base_name
-        relative_base_path.join(Toppings.conf.stylesheets.relative_base_file)
+      def index_file_path
+        base_path.join(index_file_name)
+      end
+
+      def relative_index_name
+        relative_base_path.join(Toppings.conf.stylesheets.relative_index_file)
       end
 
       def index_file_name
