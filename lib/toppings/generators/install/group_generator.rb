@@ -57,7 +57,7 @@ module Toppings
 
         # building templated files based on the beforehand registered template files
         def create_template_files
-          self.templates.each { |file| group_template_file(file) } if self.templates?
+          templates.each { |file| group_template_file(file) } if self.templates?
         end
 
         private

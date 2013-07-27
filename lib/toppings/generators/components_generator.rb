@@ -21,8 +21,7 @@ module Toppings
       private
 
       def rescued_sass_partial(type)
-        File.exists?(self.class.source_root.join(erb_template(type))) ?
-            erb_template(type) : default_template
+        File.exists?(self.class.source_root.join(erb_template(type))) ? erb_template(type) : default_template
       end
 
       def erb_template(type)

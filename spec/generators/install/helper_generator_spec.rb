@@ -7,16 +7,16 @@ describe Toppings::Generators::Install::HelperGenerator do
     create_dummy_root_file(tempdir)
   end
 
-  context "as a group of stylesheets" do
-    it "should provide a relative base file" do
+  context 'as a group of stylesheets' do
+    it 'should provide a relative base file' do
       subject.should generate(stylesheets_path.join("helper/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
     end
   end
 
-  context "providing some useful helper files" do
-    describe "a debug helper" do
-      it "should be created" do
-        subject.should generate_valid_sass_file(stylesheets_path.join("helper/_debug.sass")) { |content|
+  context 'providing some useful helper files' do
+    describe 'a debug helper' do
+      it 'should be created' do
+        subject.should generate_valid_sass_file(stylesheets_path.join('helper/_debug.sass')) { |content|
           content.should include('$debug-color: #fff')
         }
       end

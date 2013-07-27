@@ -5,7 +5,7 @@ module Toppings
   SASS_DEPENDENCIES ||= Set.new
 
   def self.gem_root
-    @gem_root ||= File.expand_path("../..", __FILE__)
+    @gem_root ||= File.expand_path('../..', __FILE__)
   end
 
   def self.conf
@@ -14,7 +14,7 @@ module Toppings
 end
 
 
-require "toppings/helper"
-require "toppings/config"
-require "toppings/version"
+require 'toppings/helper'
+require 'toppings/config'
+require 'toppings/version'
 

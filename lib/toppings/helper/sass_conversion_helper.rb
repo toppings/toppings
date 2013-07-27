@@ -18,7 +18,7 @@ module Toppings::Helper::SassConversionHelper
     # convert source content to the target format, placed in the target file
     # TODO: make conversion more dynamic, by allowing conversion from scss to sass too.
     ::Sass::Util.silence_sass_warnings do
-      Sass::Exec::SassConvert.new(["-F", "sass", "-T", "scss", source_file, target_file]).parse
+      Sass::Exec::SassConvert.new(['-F', 'sass', '-T', 'scss', source_file, target_file]).parse
     end
 
     converted_content

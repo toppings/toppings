@@ -1,5 +1,5 @@
 def stylesheets_path
-  @stylesheet_path ||= Pathname.new("stylesheets")
+  @stylesheet_path ||= Pathname.new('stylesheets')
 end
 
 def root_file

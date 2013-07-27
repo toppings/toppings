@@ -1,0 +1,7 @@
+inherit_from: ../.rubocop.yml
+
+
+# because curly bracket blocks and do...end blocks have
+# a different precedence, the usage shouldn't be checked.
+Blocks:
+  Enabled: false

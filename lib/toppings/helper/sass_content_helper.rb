@@ -13,12 +13,12 @@ module Toppings
         append_to_file file, <<-EOM
 #{devider(file)}
 // #{message}
-#{devider(file)}
+        #{devider(file)}
         EOM
       end
 
       def devider(file)
-        "// ---------------------------------------------------------------------------"
+        '// ---------------------------------------------------------------------------'
       end
 
       def add_blank_line(file)

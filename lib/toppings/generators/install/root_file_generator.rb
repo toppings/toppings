@@ -10,7 +10,7 @@ module Toppings
         end
 
         def enable_sass_framework
-          root_file_headline "Vendor Frameworks"
+          root_file_headline 'Vendor Frameworks'
 
           sass_framework_imports.each do |import|
             append_import(import, root_file_path)
@@ -20,7 +20,7 @@ module Toppings
         end
 
         def start_application_framework
-          root_file_headline "Application Framework"
+          root_file_headline 'Application Framework'
         end
 
         private

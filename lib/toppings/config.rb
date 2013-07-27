@@ -8,7 +8,7 @@ module Toppings
       super()
 
       options.each do |option, value|
-        self.send "#{option}=", value.kind_of?(Hash) ? Toppings::Config.new(value) : value
+        send "#{option}=", value.kind_of?(Hash) ? Toppings::Config.new(value) : value
       end
     end
 
@@ -31,7 +31,7 @@ module Toppings
 
       def parsed_config(path)
         config_file = File.read(path) if File.exists?(path)
-        JSON.parse(config_file || "{}")
+        JSON.parse(config_file || '{}')
       end
 
       def default_config_path

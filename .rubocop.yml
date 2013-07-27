@@ -1,0 +1,13 @@
+inherit_from: #{DEFAULT_FILE}
+
+LineLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+EmptyLines:
+  Enabled: false
+
+BlockAlignment:
+  Enabled: false
