@@ -10,12 +10,12 @@ describe Toppings::Generators::Install::GroupGenerator do
 
     context "a group file" do
       it "should be generated" do
-        subject.should generate(stylesheets_path.join("group/_base.sass"))
+        subject.should generate(stylesheets_path.join("group/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
       end
 
       it "should be appended to the base file" do
         subject.should generate(stylesheets_path.join('toppings.sass')) { |content|
-          content.should =~ /\@import \"group\/base\"/
+          content.should =~ /\@import \"group\/index\"/
         }
       end
     end

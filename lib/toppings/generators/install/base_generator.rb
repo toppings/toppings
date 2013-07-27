@@ -7,6 +7,7 @@ module Toppings
         include Thor::Actions
         include Toppings::Helper::PathHelper
         include Toppings::Helper::BaseFileHelper
+        include Toppings::Helper::IndexFileHelper
 
         def notify_invoke
           say "invoke Install::#{self.class.stripped_class_name}"

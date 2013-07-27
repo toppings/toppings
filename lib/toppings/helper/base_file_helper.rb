@@ -10,20 +10,9 @@ module Toppings
 
       private
 
-      def group_base_name
-        relative_base_path.join(Toppings.conf.stylesheets.relative_base_file)
-      end
-
-      def base_file_path
-        base_path.join(base_file_name)
-      end
 
       def base_path
         @base_path ||= stylesheets_path.join(relative_base_path)
-      end
-
-      def base_file_name
-        sassy_file_name Toppings.conf.stylesheets.relative_base_file
       end
 
       def relative_base_path

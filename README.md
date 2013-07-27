@@ -29,23 +29,23 @@ But beforementioned there is a command for initializing your stylesheet environm
 ```
 stylesheets
 ├── fonts
-│   └── _base.sass
+│   └── _index.sass
 ├── helper
-│   ├── _base.sass
+│   ├── _index.sass
 │   └── _debug.sass
 ├── layouts
-│   └── _base.sass
+│   └── _index.sass
 ├── modules
-│   └── _base.sass
+│   └── _index.sass
 ├── settings
-│   ├── _base.sass
+│   ├── _index.sass
 │   ├── _borders.sass
 │   ├── _colors.sass
 │   ├── _dimensions.sass
 │   ├── _shadows.sass
 │   └── _typography.sass
 ├── setups
-│   ├── _base.sass
+│   ├── _index.sass
 │   ├── _modular_scale.sass
 │   ├── _responsive_grid.sass
 │   └── _vertical_rhythm.sass

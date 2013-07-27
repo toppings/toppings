@@ -11,7 +11,8 @@ describe Toppings::Generators::Install::BaseGenerator do
       end
 
       describe "the classes base name" do
-        it { subject[:described].base_name.should eq("base") }
+        # the base name is here 'base', because the Module is called !!Base!!Generator
+        it { subject[:described].base_name.should eq('base') }
       end
 
     end
