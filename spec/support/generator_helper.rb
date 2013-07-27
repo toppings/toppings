@@ -1,3 +1,4 @@
+# encoding: utf-8
 def create_stylesheets_folder(dir)
   FileUtils.mkdir_p Pathname(dir).join(stylesheets_path)
 end

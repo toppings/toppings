@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Toppings::Helper::SassFileHelper
   def sassy_file_name(file, options = {})
     sass_file = []

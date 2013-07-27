@@ -1,3 +1,4 @@
+# encoding: utf-8
 def stylesheets_path
   @stylesheet_path ||= Pathname.new('stylesheets')
 end

@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'thor/group'
 
 # require related install generator files
