@@ -1,10 +1,12 @@
 {
-  // whether to use sass original style or scss syntax
   "sass": {
+    // whether to use sass original style or scss syntax for generated files
     "dialect": "sass",
-    // should not be changed
+
+    // dialect of the source templates
     "template_dialect": "sass",
 
+    // decides which libraries to use to the framework imports
     "framework": {
       "core": "compass",
       "reset": "normalize",
