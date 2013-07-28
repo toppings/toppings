@@ -11,20 +11,20 @@ end
 
 describe RegistrationTestGenerator do
 
-  context "as a generator registry" do
+  context 'as a generator registry' do
 
-    context "with a proper registration management" do
+    context 'with a proper registration management' do
       around do
         subject.generators.clear
       end
 
       subject { Toppings::Generators::InstallGenerator }
 
-      describe "upfront the list of registered generators" do
+      describe 'upfront the list of registered generators' do
         it { subject.generators.should be_empty }
       end
 
-      describe "by adding a generator, the generator list" do
+      describe 'by adding a generator, the generator list' do
         before do
           subject.register TestGenerator
         end
@@ -34,7 +34,7 @@ describe RegistrationTestGenerator do
     end
 
 
-    context "with registered generators" do
+    context 'with registered generators' do
       within_source_root do |tempdir|
         create_stylesheets_folder(tempdir)
         create_dummy_root_file(tempdir)
@@ -45,7 +45,7 @@ describe RegistrationTestGenerator do
                                            Toppings::Generators::Install::ModulesGenerator
       end
 
-      it("should install the registered generators") {
+      it('should install the registered generators') {
         subject.should generate(stylesheets_path.join("helper/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
         subject.should generate(stylesheets_path.join("modules/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
       }

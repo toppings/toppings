@@ -20,8 +20,8 @@ module Toppings
           self._generators ||= []
         end
 
-        def register(*generators)
-          self.generators.concat generators
+        def register(*new_generators)
+          generators.concat new_generators
         end
 
       end
