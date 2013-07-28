@@ -18,7 +18,7 @@ describe Toppings::Generators::Install::RootFileGenerator do
       subject.should generate_valid_sass_file(stylesheets_path.join('toppings.sass')) { |content|
         content.should include('@import "compass"')
         content.should include('@import "compass/css3"')
-        content.should include('@import "compass/reset"')
+        content.should include('@import "normalize"')
       }
     end
   end
