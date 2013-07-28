@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'set'
 require 'active_support/all'
+require 'compass'
+require 'compass-normalize'
 
 module Toppings
   SASS_DEPENDENCIES ||= Set.new

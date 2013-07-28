@@ -7,7 +7,7 @@
 
     "framework": {
       "core": "compass",
-      "reset": "compass/reset",
+      "reset": "normalize",
       "css3": "compass/css3"
     }
   },
