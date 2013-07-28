@@ -29,15 +29,17 @@ module Toppings
       end
     end
 
-    def args_error_message(error_type)
-      say "ERROR: generate was called with #{error_type} generator argument"
-      say 'USAGE: valid generators are font | module | setting | setup'
-    end
-
     desc 'g GENERATOR', 'shortcut for generate'
 
     def g(generator = nil, *args)
       generate(generator, *args)
+    end
+
+    private
+
+    def args_error_message(error_type)
+      say "ERROR: generate was called with #{error_type} generator argument"
+      say 'USAGE: valid generators are font | module | setting | setup'
     end
 
   end

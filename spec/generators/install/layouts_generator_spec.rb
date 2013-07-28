@@ -10,7 +10,7 @@ describe Toppings::Generators::Install::LayoutsGenerator do
 
   context 'as a group of stylesheets' do
     it 'should provide a relative base file' do
-      subject.should generate(stylesheets_path.join("layouts/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
+      subject.should generate_index_file('layouts')
     end
   end
 

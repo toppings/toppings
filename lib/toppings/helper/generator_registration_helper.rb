@@ -4,31 +4,26 @@ module Toppings
     module GeneratorRegistrationHelper
       extend ActiveSupport::Concern
 
-      def register_generator(*generators)
-        options = generators.last.is_a?(Hash) ? generators.pop : {}
+      included do
+        class_attribute :_generators
+      end
 
-        raise 'missing option :group for generator registration' unless options[:group]
-        group = options[:group]
+      def registered_generators
+        self.class.generators
+      end
 
-        generators.each do |generator|
-          group_generator(group, generator).start
+      private :registered_generators
+
+      module ClassMethods
+
+        def generators
+          self._generators ||= []
         end
-      end
 
-      private
+        def register(*new_generators)
+          generators.concat new_generators
+        end
 
-      def group_generator(group, generator)
-        generator = generator.to_s.camelcase
-
-        [generators_module_space,
-         group.camelcase,
-         "#{generator}Generator"].join('::').constantize
-      rescue
-        say "Generator #{generator} could not be found", :red
-      end
-
-      def generators_module_space
-        'Toppings::Generators'
       end
 
     end
