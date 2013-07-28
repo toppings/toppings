@@ -6,7 +6,7 @@ describe Toppings::Generators::InstallGenerator do
     describe 'with all install generators registered' do
 
       it('should generate the templates for the root file') {
-        subject.should generate(stylesheets_path.join('toppings.sass'))
+        subject.should generate_valid_sass_file(stylesheets_path.join('toppings.sass'))
       }
 
       it('should generate the templates of each registered generator') {
@@ -17,4 +17,8 @@ describe Toppings::Generators::InstallGenerator do
 
     end
   end
+end
+
+def say(message)
+  raise message.inspect
 end

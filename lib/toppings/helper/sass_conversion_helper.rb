@@ -28,8 +28,8 @@ module Toppings::Helper::SassConversionHelper
     [source_file, target_file].each(&:unlink)
   end
 
-  def valid_sass?(content)
-    load_dependencies
+  def valid_sass?(content, file_path = nil)
+    load_dependencies(file_path)
 
     ::Sass::Util.silence_sass_warnings do
       begin
@@ -41,9 +41,10 @@ module Toppings::Helper::SassConversionHelper
     end
   end
 
-  def load_dependencies
+  def load_dependencies(file_path = nil)
     Toppings::SASS_DEPENDENCIES.each { |dep| require dep.to_s }
     load_compass_paths
+    load_paths << file_path if file_path
   end
 
   def load_compass_paths
