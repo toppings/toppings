@@ -12,12 +12,23 @@ module Toppings
       include Thor::Actions
       include Toppings::Helper::GeneratorRegistrationHelper
 
+      register Toppings::Generators::Install::FontsGenerator,
+               Toppings::Generators::Install::SettingsGenerator,
+               Toppings::Generators::Install::HelperGenerator,
+               Toppings::Generators::Install::SetupsGenerator,
+               Toppings::Generators::Install::ModulesGenerator,
+               Toppings::Generators::Install::LayoutsGenerator
+
       def notify_invoke
         say 'invoke InstallGenerator'
       end
 
-      def install_framework_structure
-        register_generator :root_file, :fonts, :settings, :helper, :setups, :modules, :layouts, group: 'install'
+      def create_root_file
+        Toppings::Generators::Install::RootFileGenerator.start
+      end
+
+      def run_registered_generators
+        registered_generators.each { |generator| generator.start }
       end
     end
   end
