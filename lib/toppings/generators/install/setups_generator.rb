@@ -4,7 +4,7 @@ module Toppings
     module Install
       class SetupsGenerator < GroupGenerator
         with_templates :vertical_rhythm, :modular_scale
-        with_templates :responsive_grid, dependencies: [:susy]
+        with_template :responsive_grid, vendor_library: :susy
       end
     end
   end

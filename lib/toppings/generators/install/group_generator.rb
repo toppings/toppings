@@ -35,10 +35,14 @@ module Toppings
           # @param files [*String] one or more template names
           # @return [Array] returns the list of registered templates
           def with_templates(*files)
-            options = files.last.kind_of?(Hash) ? files.pop : {}
-            Toppings::SASS_DEPENDENCIES.merge(options[:dependencies]) if options[:dependencies]
-
             files.each { |file| templates << file }
+          end
+
+          def with_template(file, options = {})
+            library = options[:vendor_library]
+            Toppings::SASS_DEPENDENCIES.add(library) if library
+            file = "#{library}.#{file}"
+            templates << file
           end
 
           # registered templates for a group, that will be made available in the setup
