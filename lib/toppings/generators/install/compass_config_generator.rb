@@ -10,7 +10,7 @@ module Toppings
         end
 
         def compass_config
-          template 'compass.rb.tt', stylesheets_path.join('compass.rb')
+          template 'compass.rb.tt', Pathname.new('.').join('config').join('compass.rb')
         end
       end
     end

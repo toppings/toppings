@@ -19,3 +19,4 @@ tmp
 stylesheets/*
 .sass-cache/*
 sass/*
+config/compass.rb
