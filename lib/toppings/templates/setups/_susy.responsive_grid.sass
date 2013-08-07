@@ -1,0 +1,74 @@
+/* We live in a strong opinion that you should use a semantic layout
+ * grid framework for your layout base. Beside other frameworks out there
+ * the susy grid framework (http://susy.oddbird.net) seems to do the job
+ * as we expect it.
+ *
+ * We provide a minimal setup here which keeps a mobile first responsiveness
+ * in mind (http://www.abookapart.com/products/mobile-first).
+ *
+ * This configuration setup is taken directly from susys magic grid demo,
+ * which provides a nice dive-in into responsive designs.
+ *
+ * http://susy.oddbird.net/demos/magic
+ */
+
+@import 'susy'
+
+// for magic grids the combination of columns, column width and gutter width
+// determines the max container width here.
+// number of columns available for content
+$total-columns: 7
+
+// each column is 4em wide
+$column-width: 4em
+
+// 1em gutters between columns
+$gutter-width: 1em
+
+// grid-padding equal to gutters
+$grid-padding: $gutter-width
+
+// break-point specifies the screen size we want to apply different styles
+$break-point: 12
+
+// break-point-em is the result of our break point combined with the
+// other configurations
+$break-point-em: $break-point * ($column-width + $gutter-width) - $gutter-width
+
+// the mobile view layout comes in handy if we want to apply styles especially
+// for our mobile view, which we don't want to reset in other layouts.
+// Please be aware, that this should be used wisely and rarely, because
+// this styles will also not be available in case a browser does not support
+// media queries.
+$mobile-layout: 0em $total-columns $break-point-em
+
+// providing a better named short cut to the break-point
+$screen-layout: $break-point
+
+// as from here you just have to define your content container elements.
+// Lets assume as in the magic grid example, we have a full-width header and
+// footer and a responsive content container with class (obviously :)) "l-content"
+//
+//.l-content
+//  +container($total-columns, $break-point)
+// We will provide a few examples in the following about how to get started to use
+// the grid we have set up here, but please feel encouraged to take a closer look
+// into the susy framework documentation, to get a better feeling for susy.
+// After we have enabled the grid setup we are able to adjust our components
+// easily to fit into our content columns.
+//
+// .robot-picture
+//   +span-columns(3, 7)
+//
+// .figcaptions
+//   +span-columns(4 omega, 7)
+// Specialties can be applied to components by bringing in the
+// at-breakpoint mixin, which provides an appropriate media-query for
+// the changes.
+//
+// +at-breakpoint($large-screen-layout)
+//   .robot-picture
+//     +span-columns(4, 12)
+//
+//   .figcaptions
+//     +span-columns(8 omega, 12)
