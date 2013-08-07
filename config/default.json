@@ -14,7 +14,8 @@
 
   // the name of the given root file where base files will be appended
   "stylesheets": {
-    "root_folder": "stylesheets",
+    "root_folder": "sass",
+    "compile_target": "stylesheets",
     "root_file": "toppings",
     "relative_index_file": "index"
   }
