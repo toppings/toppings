@@ -1,0 +1,9 @@
+# Require any additional compass plugins here.
+
+# Set this to the root of your project when deployed:
+http_path = "/"
+sass_dir = <%= Toppings.conf.stylesheets.root_folder %>
+css_dir = <%= Toppings.conf.stylesheets.compile_target %>
+
+images_dir = "images"
+javascripts_dir = "javascripts"

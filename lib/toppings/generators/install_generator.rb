@@ -17,7 +17,8 @@ module Toppings
                Toppings::Generators::Install::HelperGenerator,
                Toppings::Generators::Install::SetupsGenerator,
                Toppings::Generators::Install::ModulesGenerator,
-               Toppings::Generators::Install::LayoutsGenerator
+               Toppings::Generators::Install::LayoutsGenerator,
+               Toppings::Generators::Install::CompassConfigGenerator
 
       def notify_invoke
         say 'invoke InstallGenerator'
