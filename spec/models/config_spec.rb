@@ -11,7 +11,7 @@ describe Toppings::Config do
       end
 
       describe 'setting a new attribute attr2' do
-        it { subject.attr2=('bar').should eq('bar') }
+        it { subject.attr2 = ('bar').should eq('bar') }
       end
     end
 
