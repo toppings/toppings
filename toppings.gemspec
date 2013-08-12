@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email       = ["falkhoppe81@gmail.com"]
   spec.description = %q{css frontend framework based on sass/scss}
   spec.summary     = %q{css frontend framework based on sass/scss}
-  # spec.homepage      = ""
+  spec.homepage      = "http://toppings.github.io/toppings/"
   spec.license     = "MIT"
 
   spec.files = %w(LICENSE.txt README.md toppings.gemspec)
@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.test_files                = spec.files.grep(%r{^(spec|features)/})
   spec.require_paths             = ["lib"]
   spec.required_rubygems_version = '>= 1.3.6'
+
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rake-notes"
