@@ -45,7 +45,7 @@ describe Toppings::Helper::BaseFileHelper do
     end
 
     describe 'we want to have a short link to a classes related component folder inside of our stylesheets root' do
-      it { subject.send(:base_path).to_s.should eq('stylesheets/base_file_helper') }
+      it { subject.send(:base_path).to_s.should eq('sass/base_file_helper') }
     end
 
 

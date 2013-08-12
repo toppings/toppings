@@ -10,7 +10,7 @@ describe Toppings::Helper::IndexFileHelper do
     end
 
     describe 'we want to have a short hand for a base file inside our base path' do
-      it { subject.send(:index_file_path).to_s.should eq('stylesheets/index_file_helper/_index.sass') }
+      it { subject.send(:index_file_path).to_s.should eq('sass/index_file_helper/_index.sass') }
     end
 
     describe 'we want to have a group base path without any sass file naming relative to the root_file' do
