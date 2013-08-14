@@ -1,4 +1,7 @@
 # Require any additional compass plugins here.
+<% Toppings::SASS_DEPENDENCIES.each do |dep| -%>
+<%= "require \"#{dep.to_s}\"" %>
+<% end -%>
 
 # Set this to the root of your project when deployed:
 http_path = "/"
