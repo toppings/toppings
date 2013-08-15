@@ -1,4 +1,5 @@
 # encoding: utf-8
+require_relative 'base_generator'
 require_relative 'root_file_generator'
 
 module Toppings
@@ -40,8 +41,10 @@ module Toppings
 
           def with_template(file, options = {})
             library = options[:vendor_library]
+            path    = options[:template_folder]
             Toppings::SASS_DEPENDENCIES.add(library) if library
             file = "#{library}.#{file}"
+            file = Pathname.new(path).join(file) if path
             templates << file
           end
 
@@ -71,14 +74,24 @@ module Toppings
         #
         # @param file [String] template file name
         def group_template_file(file)
-          create_sass_file(file)
+          file, path = parse_file_name(file)
+          create_sass_file(file, path: path)
           append_import file, index_file_path
         end
 
         def create_sass_file(file, options = {})
-          Toppings::Generators::SassFileGenerator.new([file], source_root: self.class.source_root, target_path: base_path).invoke_all
+          Toppings::Generators::SassFileGenerator.new([file],
+                                                      source_root: options[:path] || self.class.source_root,
+                                                      target_path: base_path).invoke_all
         end
 
+
+        def parse_file_name(file)
+          file = file.to_s
+          path_name = Pathname.new(file)
+          dir_name = path_name.dirname.to_s != '.' ? path_name.dirname : nil
+          [path_name.basename, dir_name]
+        end
       end
     end
   end
