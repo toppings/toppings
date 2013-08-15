@@ -2,6 +2,7 @@
 require 'set'
 require 'active_support/all'
 require 'compass'
+require 'thor'
 
 module Toppings
   SASS_DEPENDENCIES ||= Set.new
@@ -15,7 +16,7 @@ module Toppings
   end
 end
 
-
-require 'toppings/helper'
-require 'toppings/config'
 require 'toppings/version'
+require 'toppings/config'
+require 'toppings/helper'
+require 'toppings/generators'

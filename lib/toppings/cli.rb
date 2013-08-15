@@ -1,8 +1,5 @@
 # encoding: utf-8
-require 'thor'
-
 require 'toppings'
-require 'toppings/generators'
 
 module Toppings
   class CLI < Thor

@@ -1,5 +1,6 @@
 # encoding: utf-8
 require 'thor/group'
+require 'toppings/helper'
 
 module Toppings
   module Generators

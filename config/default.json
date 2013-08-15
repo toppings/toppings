@@ -1,5 +1,5 @@
 {
-  "required_vendors": ["toppings-normalize"],
+  "required_vendors": ["toppings/normalize", "toppings/susy"],
 
   "sass": {
     // whether to use sass original style or scss syntax for generated files
