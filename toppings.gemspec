@@ -33,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport", ">= 3.2"
   spec.add_dependency "compass", ">= 0.12.2"
   spec.add_dependency "modular-scale"
-  spec.add_dependency "toppings-normalize"
-  spec.add_dependency "toppings-susy"
+  spec.add_dependency "toppings-normalize", "~> 0.0.3"
+  spec.add_dependency "toppings-susy", "~> 0.0.2"
 end
