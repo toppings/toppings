@@ -2,7 +2,6 @@
 require 'set'
 require 'active_support/all'
 require 'compass'
-require 'compass-normalize'
 
 module Toppings
   SASS_DEPENDENCIES ||= Set.new
@@ -20,4 +19,3 @@ end
 require 'toppings/helper'
 require 'toppings/config'
 require 'toppings/version'
-

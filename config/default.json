@@ -1,4 +1,6 @@
 {
+  "required_vendors": ["toppings-normalize"],
+
   "sass": {
     // whether to use sass original style or scss syntax for generated files
     "dialect": "sass",

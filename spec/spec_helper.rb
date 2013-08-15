@@ -1,6 +1,8 @@
 # encoding: utf-8
+require 'rubygems'
 require 'bundler'
 Bundler.setup
+
 require 'genspec'
 require 'coveralls'
 Coveralls.wear!
