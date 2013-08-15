@@ -2,7 +2,7 @@
 module Toppings
   module Generators
     module Install
-      class CompassConfigGenerator < BaseGenerator
+      class CompassConfigGenerator < Toppings::Support::Generators::BaseGenerator
         class << self
           def source_root
             template_path

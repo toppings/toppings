@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 class RegistrationTestGenerator < Thor::Group
-  include Toppings::Helper::GeneratorRegistrationHelper
+  include Toppings::Support::Helper::GeneratorRegistrationHelper
 
   def run_registered_generators
     registered_generators.each { |generator| generator.start }

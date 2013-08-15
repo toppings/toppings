@@ -5,9 +5,9 @@ module Toppings
   module Generators
     class ComponentsGenerator < Thor::Group
       include Thor::Actions
-      include Toppings::Helper::PathHelper
-      include Toppings::Helper::BaseFileHelper
-      include Toppings::Helper::IndexFileHelper
+      include Toppings::Support::Helper::PathHelper
+      include Toppings::Support::Helper::BaseFileHelper
+      include Toppings::Support::Helper::IndexFileHelper
 
       argument :type
       argument :name

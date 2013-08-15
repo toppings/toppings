@@ -5,8 +5,8 @@ module Toppings
   module Generators
     class SassFileGenerator < Thor::Group
       include Thor::Actions
-      include Toppings::Helper::SassConversionHelper
-      include Toppings::Helper::SassFileHelper
+      include Toppings::Support::Helper::SassConversionHelper
+      include Toppings::Support::Helper::SassFileHelper
 
       argument :file_name
       class_option :target_path

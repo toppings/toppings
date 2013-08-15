@@ -2,7 +2,7 @@
 module Toppings
   module Generators
     module Install
-      class SettingsGenerator < GroupGenerator
+      class SettingsGenerator < Toppings::Support::Generators::GroupGenerator
         with_templates :colors, :shadows, :borders, :typography, :dimensions
       end
     end

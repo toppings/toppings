@@ -2,7 +2,7 @@
 module Toppings
   module Generators
     module Install
-      class FontsGenerator < GroupGenerator
+      class FontsGenerator < Toppings::Support::Generators::GroupGenerator
 
       end
     end

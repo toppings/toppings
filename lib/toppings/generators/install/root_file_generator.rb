@@ -2,8 +2,8 @@
 module Toppings
   module Generators
     module Install
-      class RootFileGenerator < BaseGenerator
-        include Toppings::Helper::SassFrameworkHelper
+      class RootFileGenerator < Toppings::Support::Generators::BaseGenerator
+        include Toppings::Support::Helper::SassFrameworkHelper
 
         # the only ever fully compiled file at the moment
         def create_root_file

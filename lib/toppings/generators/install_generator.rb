@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'thor/group'
 
+require 'toppings/generators/install/root_file_generator'
+
 # require related install generator files
 Dir.glob(File.join(Toppings.gem_root, '**', 'install', '*_generator.rb')).each do |generator|
   require generator
@@ -10,7 +12,7 @@ module Toppings
   module Generators
     class InstallGenerator < Thor::Group
       include Thor::Actions
-      include Toppings::Helper::GeneratorRegistrationHelper
+      include Toppings::Support::Helper::GeneratorRegistrationHelper
 
       register Toppings::Generators::Install::FontsGenerator,
                Toppings::Generators::Install::SettingsGenerator,
