@@ -6,4 +6,4 @@ rvm:
   - rbx-19mode
   - 2.0.0
 
-script: bundle exec rspec spec --format documentation ; bundle exec rubocop
+script: bundle exec rspec spec --format documentation && bundle exec rubocop
