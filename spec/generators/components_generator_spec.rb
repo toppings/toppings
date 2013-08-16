@@ -7,7 +7,9 @@ describe Toppings::Generators::ComponentsGenerator do
 
       with_args 'fubar' do
         it 'should generate a module css file called _fubar.sass' do
-          subject.should generate(stylesheets_path.join('modules/_fubar.sass'))
+          subject.should generate(stylesheets_path.join('modules/_fubar.sass')) { |content|
+            content.should include('.m-fubar')
+          }
         end
       end
 
