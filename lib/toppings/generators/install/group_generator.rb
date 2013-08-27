@@ -59,7 +59,7 @@ module Toppings
         # creating the relative base file for a generator group and appending it
         # to the root file located in the stylesheet root.
         def create_base_import_file
-          create_file index_file_path
+          create_file index_file_path, skip: true
           append_import relative_index_name, root_file_path
         end
 

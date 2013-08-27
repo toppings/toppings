@@ -7,7 +7,7 @@ module Toppings
 
         # the only ever fully compiled file at the moment
         def create_root_file
-          create_file root_file_path
+          create_file root_file_path, skip: true
         end
 
         def enable_sass_framework
