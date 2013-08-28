@@ -43,7 +43,7 @@ module Toppings
             library = options[:vendor_library]
             path    = options[:template_folder]
             Toppings::SASS_DEPENDENCIES.add(library) if library
-            file = "#{library}.#{file}"
+            file = library ? "#{library}.#{file}" : file.to_s
             file = Pathname.new(path).join(file) if path
             templates << file
           end
