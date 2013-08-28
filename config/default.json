@@ -1,5 +1,10 @@
 {
-  "required_vendors": ["toppings/normalize", "toppings/susy", "toppings/modular_scale"],
+  "required_vendors": [
+    "toppings/normalize",
+    "toppings/susy",
+    "toppings/modular_scale",
+    "toppings/singularity"
+  ],
 
   "sass": {
     // whether to use sass original style or scss syntax for generated files
