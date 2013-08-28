@@ -62,12 +62,12 @@ describe Toppings::Helper::SassConversionHelper do
           subject.load_dependencies
         end
 
-        describe 'with susy available' do
+        describe 'with singularity available' do
           it {
-            susy_load_path = subject.load_paths.select { |load_path|
-              load_path.to_s =~ /susy-[\.\d]+\/sass/
+            grid_load_paths = subject.load_paths.select { |load_path|
+              load_path.to_s =~ /singularitygs-[\.\d]+/
             }
-            susy_load_path.should_not be_empty
+            grid_load_paths.should_not be_empty
           }
         end
       end
@@ -153,7 +153,7 @@ body { background: red; }
   def valid_sass_content
     <<-eos
 @import "compass"
-@import "susy"
+@import "singularitygs"
 
 body
   background: black

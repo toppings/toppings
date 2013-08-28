@@ -26,8 +26,8 @@ describe Toppings::Generators::Install::SetupsGenerator do
 
     describe 'a responsive grid library (susy at the moment)' do
       it 'should be added' do
-        subject.should generate_valid_sass_file(stylesheets_path.join('setups/_susy.responsive_grid.sass')) { |content|
-          content.should include("@import 'susy'")
+        subject.should generate_valid_sass_file(stylesheets_path.join('setups/_singularitygs.responsive_grid.sass')) { |content|
+          content.should include("@import \"singularitygs\"")
         }
       end
     end
