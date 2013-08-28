@@ -10,11 +10,11 @@ module Toppings
         append_to_file file, "// #{message}"
       end
 
-      def add_headline_comment(message, file)
-        append_to_file file, <<-EOM
+      def headline_comment(message, file)
+        <<-EOM
 #{devider(file)}
 // #{message}
-        #{devider(file)}
+#{devider(file)}
         EOM
       end
 
@@ -22,8 +22,8 @@ module Toppings
         '// ---------------------------------------------------------------------------'
       end
 
-      def add_blank_line(file)
-        append_to_file file, "\n", force: true
+      def blank_line
+        "\n"
       end
 
       def append_import(import_file, target_file, options = {})
@@ -31,7 +31,7 @@ module Toppings
       end
 
       def import_format(import_file)
-        "@import \"#{import_file}\" \n"
+        "@import \"#{import_file}\"\n"
       end
     end
   end
