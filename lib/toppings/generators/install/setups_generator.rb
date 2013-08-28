@@ -5,7 +5,7 @@ module Toppings
   module Generators
     module Install
       class SetupsGenerator < GroupGenerator
-        with_templates :vertical_rhythm, :modular_scale
+        with_templates :vertical_rhythm
       end
     end
   end
