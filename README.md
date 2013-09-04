@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/toppings/toppings.png)](https://travis-ci.org/toppings/toppings)
 [![Coverage Status](https://coveralls.io/repos/toppings/toppings/badge.png)](https://coveralls.io/r/toppings/toppings)
-[![Code Climate](https://codeclimate.com/github/toppings/toppings.png)](https://codeclimate.com/github/mechanoid/toppings)
-[![Dependency Status](https://gemnasium.com/toppings/toppings.png)](https://gemnasium.com/mechanoid/toppings)
+[![Code Climate](https://codeclimate.com/github/toppings/toppings.png)](https://codeclimate.com/github/toppings/toppings)
+[![Dependency Status](https://gemnasium.com/toppings/toppings.png)](https://gemnasium.com/toppings/toppings)
 [![Gem Version](https://badge.fury.io/rb/toppings.png)](http://badge.fury.io/rb/toppings)
 
 ## Welcome to Toppings
