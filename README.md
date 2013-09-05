@@ -18,7 +18,6 @@ While we try to make this gem highly configurable in later versions, we want to 
 
 Installing toppings should be easy with standard gem mananig, because it does not carry any native dependencies until now :). So just try to run `gem install toppings` (with sudo, when you are not running without ruby version management) or add the gem to your Gemfile with `gem 'toppings'`.
 
-
 ### Usage
 
 The toppings gem ships with a binary called `topping` which is basically a wrapper for some) [Thor LINK IS MISSING](…)-tasks and provides a similar syntax as the rails binary does for generation tasks.
