@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "compass", ">= 0.12.2"
   spec.add_dependency "toppings-normalize", "~> 0.0.3"
   spec.add_dependency "toppings-singularity"
-  #spec.add_dependency "toppings-modular_scale"
+  spec.add_dependency "toppings-modular_scale"
 end
