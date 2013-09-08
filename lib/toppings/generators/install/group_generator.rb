@@ -40,10 +40,14 @@ module Toppings
           end
 
           def with_template(file, options = {})
-            library = options[:vendor_library]
-            path    = options[:template_folder]
+            options = options.reverse_merge({ namespaced: true })
+
+            library    = options[:vendor_library]
+            namespaced = options[:namespaced]
+            path       = options[:template_folder]
+
             Toppings::SASS_DEPENDENCIES.add(library) if library
-            file = library ? "#{library}.#{file}" : file.to_s
+            file = library && namespaced ? "#{library}.#{file}" : file.to_s
             file = Pathname.new(path).join(file) if path
             templates << file
           end
@@ -87,9 +91,9 @@ module Toppings
 
 
         def parse_file_name(file)
-          file = file.to_s
+          file      = file.to_s
           path_name = Pathname.new(file)
-          dir_name = path_name.dirname.to_s != '.' ? path_name.dirname : nil
+          dir_name  = path_name.dirname.to_s != '.' ? path_name.dirname : nil
           [path_name.basename, dir_name]
         end
       end
