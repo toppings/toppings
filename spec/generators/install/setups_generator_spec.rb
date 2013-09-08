@@ -35,7 +35,7 @@ describe Toppings::Generators::Install::SetupsGenerator do
     describe 'the compass modular scale plugin' do
       it 'should be added' do
         subject.should generate_valid_sass_file(stylesheets_path.join('setups/_modular_scale.sass')) { |content|
-          content.should include('$ratio: golden();')
+          content.should include('$ratio: golden()')
         }
       end
     end
