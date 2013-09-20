@@ -6,8 +6,10 @@ Dir.glob(File.join(Toppings.gem_root, '**', 'install', '*_generator.rb')).each d
   require generator
 end
 
-Toppings.conf.required_vendors.each do |vendor|
-  require vendor
+if Toppings.conf.required_vendors
+  Toppings.conf.required_vendors.each do |vendor|
+    require vendor
+  end
 end
 
 module Toppings
