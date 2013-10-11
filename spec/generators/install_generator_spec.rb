@@ -20,5 +20,5 @@ describe Toppings::Generators::InstallGenerator do
 end
 
 def say(message)
-  raise message.inspect
+  fail message.inspect
 end

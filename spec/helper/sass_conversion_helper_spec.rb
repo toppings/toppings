@@ -145,9 +145,9 @@ class SassConversionTest
   include Toppings::Helper::SassConversionHelper
 
   def invalid_sass_content
-    <<-eos
+    "
 body { background: red; }
-    eos
+"
   end
 
   def valid_sass_content
@@ -160,4 +160,3 @@ body
     eos
   end
 end
-

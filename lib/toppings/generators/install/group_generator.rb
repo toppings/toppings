@@ -40,7 +40,7 @@ module Toppings
           end
 
           def with_template(file, options = {})
-            options = options.reverse_merge({ namespaced: true })
+            options = options.reverse_merge(namespaced: true)
 
             library    = options[:vendor_library]
             namespaced = options[:namespaced]

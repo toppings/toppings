@@ -28,5 +28,4 @@ describe Toppings::Generators::Install::BaseGenerator do
 
   end
 
-
 end

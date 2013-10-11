@@ -7,5 +7,3 @@ end
 Dir.glob(File.join(Toppings.gem_root, '**', 'helper', '*_helper.rb')).each do |helper|
   require helper
 end
-
-
