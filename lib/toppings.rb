@@ -12,7 +12,7 @@ module Toppings
   end
 
   def self.conf
-    @conf ||= Toppings::Config.load
+    @conf = Toppings::Config.load
   end
 end
 

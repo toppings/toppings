@@ -5,6 +5,8 @@ require 'ostruct'
 module Toppings
   class Config < OpenStruct
 
+    CONFIGS = []
+
     def initialize(options = {})
       super()
 
@@ -15,11 +17,23 @@ module Toppings
 
     class << self
       def load
+        @config ||= new(joined_config)
+      end
+
+      def reload
         @config = new(joined_config)
       end
 
+
       def joined_config
-        default_config.deep_merge(custom_config)
+        configs = CONFIGS.dup
+        configs << custom_config
+        configs.each_with_object({}) {|config, result_config| result_config.deep_merge!(config)}
+      end
+
+      def inject_config(config)
+        CONFIGS << config
+        reload()
       end
 
       def custom_config
@@ -63,5 +77,8 @@ module Toppings
         Pathname.new('.').join('config')
       end
     end
+
+    CONFIGS << default_config
+
   end
 end
