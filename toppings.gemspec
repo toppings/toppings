@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
   spec.license     = "MIT"
 
   spec.files = %w(LICENSE.txt README.md toppings.gemspec)
+  spec.files += Dir.glob("config/**/*")
   spec.files += Dir.glob("bin/**/*")
   spec.files += Dir.glob("lib/**/*.rb")
 
