@@ -57,19 +57,20 @@ describe Toppings::Config do
       before do
         subject.stub(:gem_config_path).and_return test_config_path
         subject.stub(:app_config_path).and_return test_config_path
+        subject.reload
       end
 
       describe 'having a sass dialect configuration without providing it in the custom config' do
         it { subject.load.sass.dialect.should eq('sass') }
       end
 
-      #describe 'having a stylesheet root file configuration' do
-      #  it { subject.load.stylesheets.root_file.should eq('toppings_custom') }
-      #end
-      #
-      #describe "with a new option 'new_option'" do
-      #  it { subject.load.new_option.should eq('something') }
-      #end
+      describe 'having a stylesheet root file configuration' do
+        it { subject.load.stylesheets.root_file.should eq('toppings_custom') }
+      end
+
+      describe "with a new option 'new_option'" do
+        it { subject.load.new_option.should eq('something') }
+      end
     end
 
   end

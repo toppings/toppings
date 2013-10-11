@@ -24,16 +24,15 @@ module Toppings
         @config = new(joined_config)
       end
 
-
       def joined_config
         configs = CONFIGS.dup
         configs << custom_config
-        configs.each_with_object({}) {|config, result_config| result_config.deep_merge!(config)}
+        configs.each_with_object({}) { |config, result_config| result_config.deep_merge!(config) }
       end
 
       def inject_config(config)
         CONFIGS << config
-        reload()
+        reload
       end
 
       def custom_config
