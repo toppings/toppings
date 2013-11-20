@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe Toppings::Generators::ComponentsGenerator do
+describe Toppings::Generators::StructuresGenerator do
   context 'generating a module fubar' do
     with_args 'module' do
 

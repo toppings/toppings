@@ -17,7 +17,7 @@ module Toppings
     def generate(generator = nil, *args)
       if generator
         if VALID_GENERATORS.include? generator
-          Toppings::Generators::ComponentsGenerator.start(args.unshift(generator))
+          Toppings::Generators::StructuresGenerator.start(args.unshift(generator))
         else
           args_error_message('invalid generator argument')
         end

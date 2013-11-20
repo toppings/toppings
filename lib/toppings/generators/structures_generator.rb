@@ -3,7 +3,7 @@ require 'thor/group'
 
 module Toppings
   module Generators
-    class ComponentsGenerator < Thor::Group
+    class StructuresGenerator < Thor::Group
       include Thor::Actions
       include Toppings::Helper::PathHelper
       include Toppings::Helper::BaseFileHelper
