@@ -3,7 +3,7 @@ require 'toppings'
 
 module Toppings
   class CLI < Thor
-    VALID_GENERATORS = %w{module setting font setup layout helper}.freeze
+    VALID_GENERATORS = %w{component setting font setup layout helper}.freeze
 
 
     desc 'install', 'create a basic topping styles layout'
@@ -19,10 +19,10 @@ module Toppings
         if VALID_GENERATORS.include? generator
           Toppings::Generators::ComponentsGenerator.start(args.unshift(generator))
         else
-          args_error_message('invalid')
+          args_error_message('invalid generator argument')
         end
       else
-        args_error_message('no')
+        args_error_message('no generator argument')
       end
     end
 
@@ -35,8 +35,8 @@ module Toppings
     private
 
     def args_error_message(error_type)
-      say "ERROR: generate was called with #{error_type} generator argument"
-      say 'USAGE: valid generators are font | module | setting | setup'
+      say "ERROR: generate was called with #{error_type}"
+      say "USAGE: valid generators are #{VALID_GENERATORS.join(' ')}"
     end
 
   end
