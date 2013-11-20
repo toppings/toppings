@@ -42,12 +42,12 @@ describe RegistrationTestGenerator do
 
       before do
         RegistrationTestGenerator.register Toppings::Generators::Install::HelperGenerator,
-                                           Toppings::Generators::Install::ModulesGenerator
+                                           Toppings::Generators::Install::ComponentsGenerator
       end
 
       it('should install the registered generators') {
         subject.should generate(stylesheets_path.join("helper/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
-        subject.should generate(stylesheets_path.join("modules/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
+        subject.should generate(stylesheets_path.join("components/_#{Toppings.conf.stylesheets.relative_index_file}.sass"))
       }
     end
 

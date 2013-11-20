@@ -22,7 +22,7 @@ module Toppings
                Toppings::Generators::Install::SettingsGenerator,
                Toppings::Generators::Install::HelperGenerator,
                Toppings::Generators::Install::SetupsGenerator,
-               Toppings::Generators::Install::ModulesGenerator,
+               Toppings::Generators::Install::ComponentsGenerator,
                Toppings::Generators::Install::LayoutsGenerator,
                Toppings::Generators::Install::CompassConfigGenerator
 

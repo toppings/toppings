@@ -1,6 +1,11 @@
 # encoding: utf-8
 require 'thor/group'
 
+# require related structure generator files
+Dir.glob(File.join(Toppings.gem_root, '**', 'structure', '*_generator.rb')).each do |generator|
+  require generator
+end
+
 module Toppings
   module Generators
     class StructuresGenerator < Thor::Group
@@ -12,31 +17,20 @@ module Toppings
       argument :type
       argument :name
 
-      def create_structure_file
+      def create_structure_files
         self.class.base_name = type.pluralize
-        template rescued_sass_partial(type), base_path.join(sassy_file_name(name, partial: true))
-        create_file index_file_path, skip: true
-        append_import name, index_file_path
+        structure_or_base_generator(type).start [type, name]
       end
 
       private
 
-      def rescued_sass_partial(type)
-        File.exists?(self.class.source_root.join(erb_template(type))) ? erb_template(type) : default_template
+      def structure_or_base_generator(name)
+        structure_generator(name) || Toppings::Generators::Structure::BaseGenerator
       end
 
-      def erb_template(type)
-        sassy_file_name(type, type: :erb, partial: true)
-      end
-
-      def default_template
-        sassy_file_name('default', type: :erb, partial: true)
-      end
-
-      class << self
-        def source_root
-          template_path.join('structures')
-        end
+      def structure_generator(name)
+        "Toppings::Generators::Structure::#{name.camelcase}Generator".safe_constantize
+      rescue NameError
       end
 
     end
