@@ -5,14 +5,16 @@ module Toppings
     module Structure
       class ComponentGenerator < Toppings::Generators::Structure::BaseGenerator
 
+        argument :sub_modules
+
         def create_component_structure
-          component_template(type, name, "m-#{name}", template: 'module')
-          component_template(type, name, "l-#{name}", template: 'layout')
+          component_template(name, "m-#{name}", template: 'module')
+          component_template(name, "l-#{name}", template: 'layout')
         end
 
         private
 
-        def component_template(type, component_name, target_name, options = {})
+        def component_template(component_name, target_name, options = {})
           template rescued_sass_partial(options[:template]), component_path(component_name).join(sassy_file_name(target_name, partial: true))
           append_import "#{component_name}/#{target_name}", structure_file_name(component_name)
         end

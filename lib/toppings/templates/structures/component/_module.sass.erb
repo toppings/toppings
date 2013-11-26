@@ -1,2 +1,7 @@
 .m-<%= @name %>
   /* module space for <%= @name %> */
+
+<%- @sub_modules.each do |sub_module| -%>
+.m-<%= name %>-<%= sub_module %>
+  /* module space for <%= name %>-<%= sub_module %> */
+<%- end -%>

@@ -7,7 +7,6 @@ module Toppings
 
 
     desc 'install', 'create a basic topping styles layout'
-
     def install
       Toppings::Generators::InstallGenerator.start
     end
@@ -27,7 +26,6 @@ module Toppings
     end
 
     desc 'g GENERATOR', 'shortcut for generate'
-
     def g(generator = nil, *args)
       generate(generator, *args)
     end
