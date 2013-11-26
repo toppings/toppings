@@ -14,12 +14,15 @@ module Toppings
       include Toppings::Helper::BaseFileHelper
       include Toppings::Helper::IndexFileHelper
 
+      class_option :sub_modules, aliases: '-s', :type => :array, :default => []
       argument :type
       argument :name
 
       def create_structure_files
         self.class.base_name = type.pluralize
-        structure_or_base_generator(type).start [type, name]
+        arguments = [type, name]
+        arguments << options["sub_modules"] if type == 'component'
+        structure_or_base_generator(type).start arguments
       end
 
       private

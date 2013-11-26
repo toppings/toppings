@@ -1,2 +1,7 @@
 .l-<%= @name %>
   /* layout space for <%= @name %> */
+
+<%- @sub_modules.each do |sub_module| -%>
+.l-<%= name %>-<%= sub_module %>
+  /* layout space for <%= name %>-<%= sub_module %> */
+<%- end -%>
