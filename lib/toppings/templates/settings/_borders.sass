@@ -1,3 +1,18 @@
 /*
+ * In most projects, there are only a couple of borders defined
+ * accordingly to a given style guide. So in our opinion it makes sense
+ * to group the border configurations, to keep a better overview about
+ * which borders are already defined.
  *
+ * Examples:
+ *
+ * $form-field-border: 1px solid #cecece
+ * $message-border: 1px solid #dedede
+ *
+ *
+ * $dark-default:   #000 !default;
+ * $light-default:  #fff !default;
+ *
+ * @function contrasted-border($background)
+ *   @return "1px solid #{contrasted($color: $background, $dark: $dark-default, $light: $light-default)}"
  */

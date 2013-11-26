@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe Toppings::Generators::Install::ModulesGenerator do
+describe Toppings::Generators::Install::ComponentsGenerator do
 
   within_source_root do |tempdir|
     create_stylesheets_folder(tempdir)
@@ -10,7 +10,7 @@ describe Toppings::Generators::Install::ModulesGenerator do
 
   context 'as a group of stylesheets' do
     it 'should provide a relative base file' do
-      subject.should generate_index_file('modules')
+      subject.should generate_index_file('components')
     end
   end
 

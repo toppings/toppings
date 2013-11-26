@@ -31,6 +31,7 @@ module Toppings
       end
 
       def inject_config(config)
+        config = config.call if config.respond_to? :call
         CONFIGS << config
         reload
       end

@@ -2,7 +2,7 @@
 module Toppings
   module Generators
     module Install
-      class ModulesGenerator < GroupGenerator
+      class ComponentsGenerator < GroupGenerator
 
       end
     end
